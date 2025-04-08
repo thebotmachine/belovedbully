@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block page_title %}{{ page_title }}{% endblock %}
+
+{% load static %}
+
+{% block extra_styles %}
+	<link rel="stylesheet" href="{% static 'catalog/css/litter_detail.css' %}">
+	<link rel="stylesheet" href="{% static 'catalog/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="bg-[#EEE7DF]">
+		<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+			<div class="bg-white grid grid-cols-1 lg:grid-cols-2 shadow-lg rounded-3xl border-b-3 border-solid border-base-300 ring-1 ring-black/5">
+				<div class="p-4 gap-8">
+					<!-- Slider -->
+					<div data-hs-carousel='{
+    "loadingClasses": "opacity-0",
+    "isInfiniteLoop": true,
+    "isAutoPlay": true,
+					    "dotsItemClasses": "hs-carousel-active:bg-white size-3 bg-[rgba(255,255,255,0.5)] rounded-full cursor-pointer"
+  }' class="relative w-full aspect-square"> <!-- Сделали слайдер квадратным на всех экранах -->
+
+						<div class="hs-carousel relative overflow-hidden w-full h-full rounded-3xl">
+							<div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
+								{% for image in litter.images.all %}
+									<div class="hs-carousel-slide w-full h-full flex-shrink-0 relative">
+										<img src="{{ image.image.url }}" alt="Dog Image"
+										     class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+
+						<button type="button"
+						        class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:cursor-default absolute top-1/2 start-2 inline-flex justify-center items-center size-10 bg-white border border-gray-100 text-gray-800 rounded-full shadow-2xs hover:bg-gray-100 -translate-y-1/2 focus:outline-hidden">
+    <span class="text-2xl" aria-hidden="true">
+      <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"></path>
+      </svg>
+    </span>
+							<span class="sr-only">Previous</span>
+						</button>
+						<button type="button"
+						        class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:cursor-default absolute top-1/2 end-2 inline-flex justify-center items-center size-10 bg-white border border-gray-100 text-gray-800 rounded-full shadow-2xs hover:bg-gray-100 -translate-y-1/2 focus:outline-hidden">
+							<span class="sr-only">Next</span>
+							<span class="text-2xl" aria-hidden="true">
+      <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </span>
+						</button>
+
+						<div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 flex gap-x-2"></div>
+					</div>
+					<!-- End Slider -->
+
+
+				</div>
+
+				<div class="relative flex flex-col h-full p-4">
+					<h2 class="text-5xl font-lora text-gray-800">{{ litter.father }} <span class="text-4xl">x</span> {{ litter.mother }}</h2>
+					<div class="mt-4 space-y-3">
+						<div class="flex justify-between border-b pb-2 border-gray-200">
+							<div class="text-gray-600 font-montserrat">Дата рождения:</div>
+							<div class="font-medium text-gray-800 font-montserrat">{{ litter.get_formatted_birth_date }}</div>
+						</div>
+
+						<div class="flex justify-between border-b pb-2 border-gray-200">
+							<div class="text-gray-600 font-montserrat">Щенков:</div>
+							<div class="font-medium text-gray-800 font-montserrat">{{ litter.puppy_count }}</div>
+						</div>
+
+						<div class="flex justify-between border-b pb-2 border-gray-200">
+							<div class="text-gray-600 font-montserrat">Мальчиков:</div>
+							<div class="font-medium text-gray-800 font-montserrat">{{ litter.male_puppies }}</div>
+						</div>
+
+						<div class="flex justify-between border-b pb-2 border-gray-200">
+							<div class="text-gray-600 font-montserrat">Девочек:</div>
+							<div class="font-medium text-gray-800 font-montserrat">{{ litter.female_puppies }}</div>
+						</div>
+
+						<!-- Buttons -->
+						<div class="mt-7 grid grid-cols-2 gap-3 w-full">
+							<a class=" font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+							   href="#">
+								Родословная
+							</a>
+							<a class="font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+							   href="#">
+								Забронировать
+							</a>
+						</div>
+						<!-- End Buttons -->
+					</div>
+
+				</div>
+
+			</div>
+
+			{% include 'catalog/dog_list_partial.html' %}
+
+		</div>
+	</div>
+{% endblock %}

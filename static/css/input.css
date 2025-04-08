@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "../../node_modules/preline/variants.css";
+@import "tailwindcss-intersect";
+
+@plugin "@tailwindcss/typography";
+
+
+@theme {
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-lora: "Lora", sans-serif;
+
+
+    --color-soft-beige: #EEE7DF;
+    --color-dark-accent: #5D4037;
+    --color-neutral-medium: #A1887F;
+    --color-deep-navy: #1C2938;
+    --color-vintage-coral: #E8CBC0;
+    --color-cloud-pink: #F5E9E5;
+    --color-mountain-majesty: #636FA4;
+    --color-midnight-navy: #3A445B;
+    --color-base-100: oklch(77.04% 0.039 72.49); /* #EEE7DF */
+    --color-base-200: oklch(93.12% 0.0132 71.34);
+    --color-base-300: #B9A89E;
+    --color-base-content: oklch(96% 0.007 247.896);
+}
+
+@layer typography {
+    .prose {
+        font-family: var(--font-montserrat), sans-serif;
+        color: var(--color-deep-navy);
+    }
+
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4,
+    .prose h5,
+    .prose h6 {
+        font-family: var(--font-montserrat);
+        color: var(--color-deep-navy);
+    }
+}

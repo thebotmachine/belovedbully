@@ -1,0 +1,60 @@
+def get_upload_path_1(instance, filename):
+    unique_filename = f"{uuid.uuid4().hex}{os.path.splitext(filename)[1]}"
+    id_value = instance.id
+
+    folder = os.path.join(instance.__class__.__name__.lower(), str(id_value), unique_filename)
+
+    return folder
+
+
+def get_upload_path_copy2(instance, filename):
+    """Генерирует путь для сохранения изображения."""
+
+    # Генерация уникального имени файла
+    unique_filename = f"{uuid.uuid4().hex}{os.path.splitext(filename)[1]}"
+
+    # Путь по умолчанию
+    folder = "uploads"
+
+    # Для изображений собаки
+    if isinstance(instance, DogImage):
+        if instance.dog and instance.dog.id:
+            dog_id = instance.dog.id # Создаем уникальный slug из имени собаки
+            folder = os.path.join("dogs", str(dog_id))
+        else:
+            return None  # Если у собаки нет имени, не сохраняем изображение
+
+    # Для изображений помёта
+    elif isinstance(instance, LitterImage):
+        if instance.litter and instance.litter.id:
+            litter_id = instance.litter.id
+            folder = os.path.join("litters", str(litter_id))
+        else:
+            return None  # Если у помёта нет ID, не сохраняем изображение
+
+    return os.path.join(folder, unique_filename)
+
+
+def get_upload_path_copy(instance, filename):
+    """
+    Генерирует путь для сохранения файла в зависимости от модели.
+    Если у модели определён атрибут `upload_folder`, то используется он.
+    Иначе используется имя модели (в нижнем регистре) с добавлением 's',
+    а если экземпляр уже сохранён, то добавляется его pk.
+    """
+    # Генерируем уникальное имя файла
+    ext = os.path.splitext(filename)[1]
+    unique_filename = f"{uuid.uuid4().hex}{ext}"
+
+    # Определяем папку для загрузки
+    if hasattr(instance, 'upload_folder') and instance.upload_folder:
+        folder = instance.upload_folder
+    else:
+        # Используем имя модели в нижнем регистре
+        folder = instance.__class__.__name__.lower()
+
+    # Если экземпляр уже сохранён, добавляем его pk для дополнительной уникальности
+    if instance.pk:
+        folder = os.path.join(folder, str(instance.pk))
+
+    return os.path.join(folder, unique_filename)

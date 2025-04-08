@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- 
+      - primary meta tags
+    -->
+	<title>BelovedBully</title>
+	<meta name="title" content="BelovedBully">
+	<meta name="description" content="BelovedBully">
+
+	<!-- 
+      - favicon
+    -->
+	<link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+	<!-- 
+      - google font link
+    -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap"
+	      rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+	<!-- 
+      - custom css link
+    -->
+	<link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	{% block extra_styles %}
+
+	{% endblock %}
+</head>
+
+<body>
+
+<!--
+  - #HEADER
+-->
+
+<header class="header" data-header>
+
+	<div class="container">
+
+		<a href="#" class="logo">
+			<img src="{% static 'main/images/logo.svg' %}" width="70" height="70" alt="">
+			<div class="title-1">BelovedBully</div>
+		</a>
+
+		<nav class="navbar" data-navbar>
+
+			<div class="container">
+
+				<ul class="navbar-list">
+
+					<li>
+						<a href="{% url 'main:main' %}"
+						   class="navbar-link  {% if request.resolver_match.url_name == 'main' %}active{% endif %}">
+							<span>Главная</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{% url 'catalog:litter' %}"
+						   class="navbar-link {% if request.resolver_match.url_name == 'litter' %}active{% endif %}">
+							<span>Помёты</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{% url 'catalog:puppies' %}"
+						   class="navbar-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+							<span>Щенки</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{% url 'catalog:puppies_archive' %}"
+						   class="navbar-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+							<span>Выпускники</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{% url 'catalog:parents' %}"
+						   class="navbar-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+							<span>Производители</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="{% url 'catalog:puppies' %}"
+						   class="navbar-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+							<span>О питомнике</span>
+						</a>
+					</li>
+
+				</ul>
+			
+			
+			</div>
+
+		</nav>
+
+
+		<button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+			<ion-icon name="menu-outline" aria-hidden="true" class="menu-icon"></ion-icon>
+			<ion-icon name="close-outline" aria-hidden="true" class="close-icon"></ion-icon>
+		</button>
+
+	</div>
+
+</header>
+
+<main>
+	{% block content %}
+		<!-- Здесь будет подставляться контент из дочерних шаблонов -->
+	{% endblock %}
+</main>
+
+<!-- 
+  - #FOOTER
+-->
+
+
+<!-- 
+  - #BACK TO TOP
+-->
+
+<a href="#top" class="back-top-btn active" aria-label="back to top" data-back-top-btn>
+	<ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+</a>
+
+<script src="{% static 'js/base.js' %}"></script>
+
+{% block extra_scripts %}
+
+{% endblock %}
+<!-- 
+  - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

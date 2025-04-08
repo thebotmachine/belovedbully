@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="bg-[#EEE7DF] min-h-screen flex items-center justify-center">
+<div class="max-w-3xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto bg-white">
+  <div class="max-w-3xl px-4 pt-6 pb-12 sm:px-6 lg:px-8">
+    <ul class="mt-16 space-y-5">
+      {% for item in news %}
+      <li class="mx-auto">
+        <div class="bg-white w-fit max-w-md rounded-tr-3xl rounded-tl-3xl rounded-br-3xl border border-base-300 overflow-hidden relative">
+          <div class="p-4">
+            <p class="text-md text-deep-navy">
+              {{ item.content }}
+            </p>
+            <p class="mt-2 text-sm text-gray-400 text-right">
+              {{ item.created_at }}
+            </p>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{
+  "name": "BelovedBully",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx @tailwindcss/cli -i static/css/input.css -o static/css/output.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@preline/carousel": "^3.0.0",
+    "@tailwindcss/cli": "^4.0.9",
+    "htmx.org": "^1.9.12",
+    "preline": "^3.0.0",
+    "tailwindcss": "^4.0.9",
+    "tailwindcss-intersect": "^2.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "tailwindcss-motion": "^1.1.0"
+  }
+}

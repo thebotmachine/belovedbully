@@ -1,0 +1,58 @@
+<div class="grid lg:grid-cols-2 gap-6 mt-6">
+	{% for item in articles %}
+		<!-- Card -->
+		<a class="group relative block rounded-3xl focus:outline-hidden ring-1 shadow-sm ring-black/5"
+		   href="{% url 'blog:article_detail' item.slug %}">
+			<div class="group shrink-0 relative rounded-3xl overflow-hidden w-full h-87.5 before:absolute before:inset-x-0 before:z-1 before:size-full before:bg-linear-to-t before:from-gray-900/70">
+				{% with item.images.first as image %}
+					{% if image %}
+						<img class="size-full absolute rounded-xl top-0 start-0 object-cover transition-transform duration-500 ease-in-out" src="{{ image.thumbnail.url }}" alt="Blog Image">
+					{% endif %}
+				{% endwith %}
+			</div>
+
+
+			<div class="absolute top-0 inset-x-0 z-10">
+				<div class="p-4 flex flex-col h-full sm:p-6">
+					<!-- Avatar -->
+					<div class="flex items-center">
+
+						<div class="">
+							<h4 class="font-medium text-white font-montserrat">
+								BelovedBully
+							</h4>
+							<p class="text-xs text-white/80 font-montserrat">
+								{{ item.created_at|date:"d.m.Y" }}
+							</p>
+						</div>
+					</div>
+					<!-- End Avatar -->
+				</div>
+			</div>
+
+			<div class="absolute bottom-0 inset-x-0 z-10">
+				<div class="flex flex-col h-full p-4 sm:p-6">
+					<h3 class="text-lg font-lora sm:text-3xl font-medium text-white group-hover:text-white/80 group-focus:text-white/80">
+						{{ item.title }}
+					</h3>
+					<p class="text-sm mt-2 text-white/80 font-montserrat">
+						{{ item.content|striptags|truncatewords:20 }}
+					<p class="mt-3 inline-flex items-center gap-x-1 text-sm font-montserrat font-medium text-neutral-200">
+						<svg class="me-2 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+						     fill="currentColor" viewBox="0 0 20 14">
+							<path d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>
+						</svg>
+						Читать дальше
+						<svg class="shrink-0 size-4 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1"
+						     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+						     stroke-linejoin="round">
+							<path d="m9 18 6-6-6-6"/>
+						</svg>
+					</p>
+				</div>
+			</div>
+		</a>
+		<!-- End Card -->
+	{% endfor %}
+</div>

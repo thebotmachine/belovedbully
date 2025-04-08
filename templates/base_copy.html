@@ -1,0 +1,210 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- 
+      - primary meta tags
+    -->
+	<title>BelovedBully</title>
+	<meta name="title" content="BelovedBully">
+	<meta name="description" content="BelovedBully">
+
+	<!-- 
+      - favicon
+    -->
+	<link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+	<!-- 
+      - google font link
+    -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap"
+	      rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=lora:ital,wght@0,400;0,700;1,400;1,700&family=montserrat+Flex:opsz,wght@8..144,100..1000&display=swap"
+	      rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=lora:ital,wght@0,400;0,700;1,400;1,700&family=montserrat:wght@100..900&family=montserrat+Flex:opsz,wght@8..144,100..1000&display=swap"
+	      rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static '/css/output.css' %}">
+	<!-- 
+      - custom css link
+    -->
+
+	{% block extra_styles %}
+
+	{% endblock %}
+</head>
+
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="sticky border-b-2 border-solid border-base-300 top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-base ">
+	<nav class="relative w-full bg-white px-2 py-2.5 md:flex md:items-center md:justify-between md:py-2.5 md:px-4 md:mx-auto">
+		<div class="px-4 lg:max-w-7xl md:px-0 flex justify-between items-center">
+			<div class="flex items-center">
+				<!-- Logo -->
+				<a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-hidden focus:opacity-80"
+				   href="../templates/personal/index.html" aria-label="Preline">
+
+
+					<a class="flex-none text-4xl font-lora text-deep-navy" href="#" aria-label="Brand">
+						Beloved<span class="font-semibold">Bully</span>
+					</a>
+				</a>
+				<!-- End Logo -->
+
+				<div class="ms-1 sm:ms-2">
+
+				</div>
+			</div>
+
+			<div class="md:hidden">
+				<!-- Toggle Button -->
+				<button type="button"
+				        class="hs-collapse-toggle flex justify-center items-center size-10 border border-gray-200 text-gray-500 rounded-full hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200"
+				        id="hs-navbar-header-floating-collapse" aria-expanded="false"
+				        aria-controls="hs-navbar-header-floating" aria-label="Toggle navigation"
+				        data-hs-collapse="#hs-navbar-header-floating">
+					<svg class="hs-collapse-open:hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+					     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					     stroke-linecap="round" stroke-linejoin="round">
+						<line x1="3" x2="21" y1="6" y2="6"/>
+						<line x1="3" x2="21" y1="12" y2="12"/>
+						<line x1="3" x2="21" y1="18" y2="18"/>
+					</svg>
+					<svg class="hs-collapse-open:block hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
+					     width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					     stroke-linecap="round" stroke-linejoin="round">
+						<path d="M18 6 6 18"/>
+						<path d="m6 6 12 12"/>
+					</svg>
+				</button>
+				<!-- End Toggle Button -->
+			</div>
+		</div>
+
+		<div id="hs-navbar-header-floating"
+		     class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow md:block"
+		     aria-labelledby="hs-navbar-header-floating-collapse">
+			<div class="flex flex-col md:flex-row md:items-center md:justify-end gap-2 md:gap-3 mt-3 md:mt-0 py-2 md:py-0 md:ps-7 ">
+				<a class="font-montserrat py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 {% if request.resolver_match.url_name == 'main' %}border-gray-800 font-medium text-deep-navy{% else %}border-transparent text-gray-500 hover:text-gray-800{% endif %} focus:outline-hidden"
+				   href="{% url 'main:main' %}" aria-current="page">Главная</a>
+				<a class="font-montserrat py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 {% if request.resolver_match.url_name == 'litter_list' %}border-gray-800 font-medium text-deep-navy{% else %}border-transparent text-gray-500 hover:text-gray-800{% endif %} focus:outline-hidden"
+				   href="{% url 'catalog:litter_list' %}">Пометы</a>
+
+				<a class="font-montserrat py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 {% if request.resolver_match.url_name == 'puppies_list' %}border-gray-800 font-medium text-deep-navy{% else %}border-transparent text-gray-500 hover:text-gray-800{% endif %} focus:outline-hidden "
+				   href="{% url 'catalog:puppies_list' %}">Щенки</a>
+
+				<a class="font-montserrat py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 {% if request.resolver_match.url_name == 'puppies_archive_list' %}border-gray-800 font-medium text-deep-navy{% else %}border-transparent text-gray-500 hover:text-gray-800{% endif %} focus:outline-hidden"
+				   href="{% url 'catalog:puppies_archive_list' %}">Выпускники</a>
+
+				<a class="font-montserrat py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 {% if request.resolver_match.url_name == 'parents_list' %}border-gray-800 font-medium text-deep-navy{% else %}border-transparent text-gray-500 hover:text-gray-800{% endif %} focus:outline-hidden"
+				   href="{% url 'catalog:parents_list' %}">Производители</a>
+
+				<a class="font-montserrat py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 {% if '/blog/articles/' in request.path %}border-gray-800 font-medium text-deep-navy{% else %}border-transparent text-gray-500 hover:text-gray-800{% endif %} focus:outline-hidden"
+				   href="{% url 'blog:article_list' %}">Статьи</a>
+				<!-- Card -->
+				<div class="text-center">
+					<a class="font-montserrat py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+					   href="tel:+79688212621">
+						<svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+						     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+						     stroke-linecap="round"
+						     stroke-linejoin="round">
+							<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+						</svg>
+						+7 (968) 821-26-21
+					</a>
+				</div>
+				<!-- End Card -->
+			</div>
+		</div>
+
+	</nav>
+</header>
+<!-- ========== END HEADER ========== -->
+
+
+<main>
+	{% block content %}
+		<!-- Здесь будет подставляться контент из дочерних шаблонов -->
+	{% endblock %}
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="mt-auto border-t-2 border-solid border-base-300 w-full py-10 px-4 sm:px-6 lg:px-8">
+	<!-- Grid -->
+	<div class="text-center">
+		<div>
+			<a class="flex-none font-lora text-4xl text-deep-navy" href="#" aria-label="Brand">
+				Beloved<span class="font-semibold">Bully</span>
+			</a>
+		</div>
+		<!-- End Col -->
+
+		<div class="mt-3">
+			<p class="text-gray-500 font-montserrat">
+				© 2025 Все права защищены.
+			</p>
+		</div>
+
+		<!-- Social Brands -->
+		<div class="mt-3 space-x-2">
+			<a class="size-12 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+			   href="#">
+				<svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+				     fill="currentColor" viewBox="0 0 16 16">
+					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09"/>
+				</svg>
+			</a>
+			<a class="size-12 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+			   href="#">
+				<svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+				     fill="currentColor" viewBox="0 0 16 16">
+					<path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+				</svg>
+			</a>
+			<a class="size-12 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+			   href="https://instagram.com/">
+				<svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+				     fill="currentColor" viewBox="0 0 16 16">
+					<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+				</svg>
+			</a>
+
+			<a class="size-12 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+			   href="https://vk.com/id632571153">
+				<svg class="shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+				     fill="currentColor" viewBox="0 0 32 32">
+					<path d="M25.217 22.402h-2.179c-0.825 0-1.080-0.656-2.562-2.158-1.291-1.25-1.862-1.418-2.179-1.418-0.445 0-0.572 0.127-0.572 0.741v1.968c0 0.53-0.169 0.847-1.566 0.847-2.818-0.189-5.24-1.726-6.646-3.966l-0.021-0.035c-1.632-2.027-2.835-4.47-3.43-7.142l-0.022-0.117c0-0.317 0.127-0.614 0.741-0.614h2.179c0.55 0 0.762 0.254 0.975 0.846 1.078 3.112 2.878 5.842 3.619 5.842 0.275 0 0.402-0.127 0.402-0.825v-3.219c-0.085-1.482-0.868-1.608-0.868-2.137 0.009-0.283 0.241-0.509 0.525-0.509 0.009 0 0.017 0 0.026 0.001l-0.001-0h3.429c0.466 0 0.635 0.254 0.635 0.804v4.34c0 0.465 0.212 0.635 0.339 0.635 0.275 0 0.509-0.17 1.016-0.677 1.054-1.287 1.955-2.759 2.642-4.346l0.046-0.12c0.145-0.363 0.493-0.615 0.9-0.615 0.019 0 0.037 0.001 0.056 0.002l-0.003-0h2.179c0.656 0 0.805 0.337 0.656 0.804-0.874 1.925-1.856 3.579-2.994 5.111l0.052-0.074c-0.232 0.381-0.317 0.55 0 0.975 0.232 0.317 0.995 0.973 1.503 1.566 0.735 0.727 1.351 1.573 1.816 2.507l0.025 0.055c0.212 0.612-0.106 0.93-0.72 0.93zM20.604 1.004h-9.207c-8.403 0-10.392 1.989-10.392 10.392v9.207c0 8.403 1.989 10.392 10.392 10.392h9.207c8.403 0 10.392-1.989 10.392-10.392v-9.207c0-8.403-2.011-10.392-10.392-10.392z"></path>
+				</svg>
+			</a>
+		</div>
+		<!-- End Social Brands -->
+	</div>
+	<!-- End Grid -->
+</footer>
+<!-- ========== END FOOTER ========== -->
+<script defer src="{% static 'js/carousel.js' %}"></script>
+<script defer src="{% static 'js/accordion.js' %}"></script>
+<script defer src="{% static 'js/collapse.js' %}"></script>
+<script defer src="{% static 'js/htmx.js' %}"></script>
+
+<!--
+  - ionicon link
+-->
+
+
+</body>
+</html>
+
+

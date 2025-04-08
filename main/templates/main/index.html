@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+	<!-- HERO -->
+	<div class="relative w-full h-screen">
+		<!-- Фоновое изображение с затемнением -->
+		<img src="{% static 'images/0S9Sg1mb-iU.jpg' %}"
+		     class="absolute inset-0 w-full h-full object-cover brightness-60"
+		     alt="Background Image">
+
+		<!-- Улучшенный градиент для плавного перехода -->
+		<div class="absolute inset-x-0 bottom-0 h-80 bg-gradient-to-b from-transparent via-[#EEE7DF]/30 to-[#EEE7DF]"></div>
+
+		<!-- Текст поверх изображения -->
+		<div class="absolute inset-0 flex items-center justify-center">
+
+			<div class="mx-auto px-4 sm:px-6 lg:px-8 pt-22">
+
+
+				<!-- Title -->
+				<div class="max-w-4xl text-center mx-auto">
+					<h1 class="block font-lora text-neutral-200 text-3xl md:text-5xl lg:text-7xl">
+						Добро пожаловать<br> в питомник<br> <span class="font-medium">Beloved Bully</span>
+					</h1>
+				</div>
+				<!-- End Title -->
+
+				<div class="mt-5 max-w-3xl text-center mx-auto">
+					<p class="text-base text-white/80 font-montserrat">В каждом щенке мы видим любовь!</p>
+				</div>
+				<div class="pt-26 text-center">
+					<a class="font-montserrat group py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+					   href="{% url "catalog:puppies_list" %}">
+						Свободные щенки
+						<svg class="shrink-0 size-4 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1"
+						     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+						     stroke-linejoin="round">
+							<path d="m9 18 6-6-6-6"/>
+						</svg>
+					</a>
+
+					<!-- Стрелка вниз, теперь по центру -->
+					<div class="mt-20 flex justify-center">
+						<svg class="shrink-0 size-18 text-white animate-bounce"
+						     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+						     stroke-linejoin="round" onclick="scrollToNextSection()">
+							<path d="M6 9l6 6 6-6"/>
+						</svg>
+					</div>
+				</div>
+
+				<script>
+                    function scrollToNextSection() {
+                        const nextSection = document.getElementById("next-section");
+                        window.scrollTo({
+                            top: nextSection.offsetTop - 60,  // 100px отступ сверху
+                            behavior: "smooth"
+                        });
+                    }
+				</script>
+
+			</div>
+
+
+		</div>
+
+	</div>
+	<!-- END HERO -->
+
+	<!-- PUPPIES -->
+	<div id="next-section">
+		<div class="bg-base-200">
+			<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+				<div class="text-center">
+					<h1 class="text-5xl font-lora text-gray-800 md:text-5xl">
+						Свободные щенки
+					</h1>
+					<p class="mt-4 mb-12 text-gray-600 font-montserrat">
+						Найдите своего будущего друга
+					</p>
+				</div>
+
+				{% include 'catalog/dog_list_partial.html' with dogs=puppies %}
+
+				<!-- Card -->
+				<div class="mt-10 mb-12 text-center">
+					<a class="font-montserrat group py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+					   href="{% url "catalog:puppies_list" %}">
+						Смотреть еще
+						<svg class="shrink-0 size-4 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1"
+						     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+						     stroke-linejoin="round">
+							<path d="m9 18 6-6-6-6"/>
+						</svg>
+						</svg>
+					</a>
+				</div>
+				<!-- End Card -->
+			</div>
+		</div>
+	</div>
+	<!-- END PUPPIES -->
+
+	<!-- TESTIMONIALS -->
+	<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+		<!-- Testimonials with Stats -->
+		<!-- Grid -->
+		<div class="lg:grid lg:items-center lg:justify-between">
+			<div class="lg:col-span-5 lg:col-start-1">
+				<!-- Title -->
+				<h2 class="mb-2 font-lora text-3xl text-gray-800 lg:text-4xl">
+					Как выбрать идеального щенка?
+				</h2>
+				<p class="text-gray-600 font-montserrat">
+					Выбирайте сердцем! Загляни в глаза своему будущему малышу. Почувствуй эту связь, эту искру!
+					Сердце не обманет - оно выберет того самого!
+				</p>
+				<!-- End Title -->
+			</div>
+			<!-- End Col -->
+		</div>
+	</div>
+	<!-- End Col -->
+	<!-- END TESTIMONIALS -->
+
+	<!-- ADULTS -->
+	<div class="bg-soft-beige">
+		<div class="">
+			<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+				<div class="text-center">
+					<h1 class="text-5xl font-lora text-gray-800 sm:text-5xl">
+						Наши производители
+					</h1>
+					<p class="mt-4 mb-12 text-gray-600 font-montserrat">
+						Которые гарантируют здоровье и красоту щенков
+					</p>
+				</div>
+
+				{% include 'catalog/dog_list_partial.html' with dogs=adults %}
+
+				<!-- Card -->
+				<div class="mt-10 mb-12 text-center">
+					<a class="font-montserrat group py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+					   href="{% url "catalog:adults_list" %}">
+						Смотреть еще
+						<svg class="shrink-0 size-4 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1"
+						     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+						     stroke-linejoin="round">
+							<path d="m9 18 6-6-6-6"/>
+						</svg>
+						</svg>
+					</a>
+				</div>
+				<!-- End Card -->
+			</div>
+		</div>
+	</div>
+	<!-- adultS -->
+
+	<!-- CONTACTS -->
+	<div class="">
+		<div class="">
+			<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+				<div class="text-center">
+					<h1 class="text-5xl font-lora text-gray-800 sm:text-5xl">
+						Контакты
+					</h1>
+					<p class="mt-4 mb-12 text-gray-600 font-montserrat">
+						Свяжитесь с нами
+					</p>
+				</div>
+
+				<!-- Icon Blocks -->
+				<div class="grid sm:grid-cols-1 lg:grid-cols-4 items-center gap-6">
+
+					<!-- Card -->
+					<div class="opacity-0 translate-y-10 intersect:opacity-100 intersect:translate-y-0
+                transition-all duration-700 ease-out delay-[100ms]
+                bg-soft-beige rounded-3xl ring-1 ring-black/15 p-4" data-intersect>
+						<div class="flex items-center gap-x-3">
+							<div class="shrink-0">
+								<div class="flex justify-center items-center size-14 bg-white shadow-2xs border border-gray-200 rounded-2xl mx-auto">
+									<svg class="shrink-0 size-8 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+									     width="16"
+									     height="16"
+									     fill="currentColor" viewBox="0 0 16 16">
+										<path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+									</svg>
+								</div>
+							</div>
+							<div class="grow">
+								<h1 class="text-lg font-montserrat font-medium text-deep-navy">
+									Whatsapp
+								</h1>
+								<p class="text-sm font-montserrat text-gray-600">
+									+7 (968) 821-26-21
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- End Card -->
+
+					<!-- Card -->
+					<div class="opacity-0 translate-y-10 intersect:opacity-100 intersect:translate-y-0
+                transition-all duration-700 ease-out delay-[200ms]
+                bg-soft-beige rounded-3xl ring-1 ring-black/15 p-4" data-intersect>
+						<div class="flex items-center gap-x-3">
+							<div class="shrink-0">
+								<div class="flex justify-center items-center size-14 bg-white shadow-2xs border border-gray-200 rounded-2xl mx-auto">
+									<svg class="shrink-0 size-8 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+									     width="16"
+									     height="16"
+									     fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+									</svg>
+								</div>
+							</div>
+							<div class="grow">
+								<h1 class="text-lg font-montserrat font-medium text-deep-navy">
+									Instagram
+								</h1>
+								<p class="text-sm font-montserrat text-gray-600">
+									@beauceron_and_bully
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- End Card -->
+
+					<!-- Card -->
+					<div class="opacity-0 translate-y-10 intersect:opacity-100 intersect:translate-y-0
+                transition-all duration-700 ease-out delay-[300ms]
+                bg-soft-beige rounded-3xl ring-1 ring-black/15 p-4" data-intersect>
+						<div class="flex items-center gap-x-3">
+							<div class="shrink-0">
+								<div class="flex justify-center items-center size-14 bg-white shadow-2xs border border-gray-200 rounded-2xl mx-auto">
+									<svg class="shrink-0 size-10 text-gray-600" xmlns="http://www.w3.org/2000/svg"
+									     width="16" height="16"
+									     fill="currentColor" viewBox="0 0 28 30">
+										<path d="M16.563 15.75c-0.5-0.188-0.5-0.906-0.531-1.406-0.125-1.781 0.5-4.5-0.25-5.656-0.531-0.688-3.094-0.625-4.656-0.531-0.438 0.063-0.969 0.156-1.344 0.344s-0.75 0.5-0.75 0.781c0 0.406 0.938 0.344 1.281 0.875 0.375 0.563 0.375 1.781 0.375 2.781 0 1.156-0.188 2.688-0.656 2.75-0.719 0.031-1.125-0.688-1.5-1.219-0.75-1.031-1.5-2.313-2.063-3.563-0.281-0.656-0.438-1.375-0.844-1.656-0.625-0.438-1.75-0.469-2.844-0.438-1 0.031-2.438-0.094-2.719 0.5-0.219 0.656 0.25 1.281 0.5 1.813 1.281 2.781 2.656 5.219 4.344 7.531 1.563 2.156 3.031 3.875 5.906 4.781 0.813 0.25 4.375 0.969 5.094 0 0.25-0.375 0.188-1.219 0.313-1.844s0.281-1.25 0.875-1.281c0.5-0.031 0.781 0.406 1.094 0.719 0.344 0.344 0.625 0.625 0.875 0.938 0.594 0.594 1.219 1.406 1.969 1.719 1.031 0.438 2.625 0.313 4.125 0.25 1.219-0.031 2.094-0.281 2.188-1 0.063-0.563-0.563-1.375-0.938-1.844-0.938-1.156-1.375-1.5-2.438-2.563-0.469-0.469-1.063-0.969-1.063-1.531-0.031-0.344 0.25-0.656 0.5-1 1.094-1.625 2.188-2.781 3.188-4.469 0.281-0.5 0.938-1.656 0.688-2.219-0.281-0.625-1.844-0.438-2.813-0.438-1.25 0-2.875-0.094-3.188 0.156-0.594 0.406-0.844 1.063-1.125 1.688-0.625 1.438-1.469 2.906-2.344 4-0.313 0.375-0.906 1.156-1.25 1.031z"></path>
+									</svg>
+								</div>
+							</div>
+							<div class="grow">
+								<h1 class="text-lg font-montserrat font-medium text-deep-navy">
+									VK
+								</h1>
+								<p class="text-sm font-montserrat text-gray-600">
+									id632571153
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- End Card -->
+
+					<!-- Card -->
+					<div class="opacity-0 translate-y-10 intersect:opacity-100 intersect:translate-y-0
+                transition-all duration-700 ease-out delay-[400ms]
+                bg-soft-beige rounded-3xl ring-1 ring-black/15 p-4" data-intersect>
+						<div class="flex items-center gap-x-3">
+							<div class="shrink-0">
+								<div class="flex justify-center items-center size-14 bg-white shadow-2xs border border-gray-200 rounded-2xl mx-auto">
+
+									<svg class="shrink-0 size-8 text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none"
+									     xmlns="http://www.w3.org/2000/svg">
+										<g clip-path="url(#a)">
+											<path fill="#4a5565" d="M0 0h16v16H0z"/>
+											<path d="M16 8a8 8 0 1 0 0-16 8 8 0 0 0 0 16" fill="#364153"/>
+											<path d="M9.883 7.635H5.156V5.764h4.727c.276 0 .468.048.564.132s.156.24.156.468v.672c0 .24-.06.396-.156.48s-.288.12-.564.12zm.324-3.634H3.152V12h2.005V9.398h3.694L10.604 12h2.244l-1.932-2.615c.712-.106 1.032-.324 1.296-.684s.396-.935.396-1.703v-.6c0-.456-.048-.815-.132-1.091s-.228-.516-.432-.731a1.95 1.95 0 0 0-.744-.444A4 4 0 0 0 10.208 4z"
+											      fill="#fff"/>
+										</g>
+										<defs>
+											<clipPath id="a">
+												<path fill="#4a5565"
+												      d="M3.879 0h8.242A3.88 3.88 0 0 1 16 3.879v8.242A3.88 3.88 0 0 1 12.121 16H3.879A3.88 3.88 0 0 1 0 12.121V3.879A3.88 3.88 0 0 1 3.879 0"/>
+											</clipPath>
+										</defs>
+									</svg>
+								</div>
+							</div>
+							<div class="grow">
+								<h1 class="text-lg font-montserrat font-medium text-deep-navy">
+									Rutube
+								</h1>
+								<p class="text-sm font-montserrat text-gray-600">
+									channel/54230681
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- End Card -->
+
+				</div>
+				<!-- End Icon Blocks -->
+
+			</div>
+		</div>
+		<!-- END CONTACTS -->
+
+		<!-- FAQ -->
+		<div class="bg-soft-beige">
+			<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
+				<div class="text-center">
+					<h1 class="text-5xl font-lora text-gray-800 sm:text-5xl">
+						Частые вопросы
+					</h1>
+					<p class="mt-4 mb-12 text-gray-600 font-montserrat">
+						Мы рады ответить на все ваши вопросы
+					</p>
+				</div>
+
+				{% include 'info/faq_list_partial.html' %}
+
+			</div>
+		</div>
+		<!-- End FAQ -->
+
+	</div>
+{% endblock %}

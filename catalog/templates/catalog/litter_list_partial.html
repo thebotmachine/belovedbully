@@ -1,0 +1,23 @@
+<div class="grid grid-cols-2 gap-6 md:grid-cols-4 mt-6">
+	{% for litter in litters %}
+		<a href="{% url 'catalog:litter_detail' litter.slug %}"
+		   class="block bg-white shadow-lg rounded-3xl border-b-3 border-solid border-base-300 ring-1 ring-black/5 overflow-hidden transition duration-300 ease-in-out hover:translate-y-[-10px]">
+			<div class="aspect-square bg-gray-200 overflow-hidden rounded-t-xl">
+				<img src="{{ litter.images.first.thumbnail.url }}" alt="Product"
+				     class="w-full h-full object-cover"/>
+			</div>
+			<div class="p-2 text-center">
+				<div class="flex flex-col text-4xl">
+					<p class="text-2xl font-lora text-deep-navy lg:text-4xl">{{ litter.father }}</p>
+					<p class="text-lg font-lora text-deep-navy lg:text-2xl">x</p>
+					<p class="text-2xl font-lora text-deep-navy lg:text-4xl">{{ litter.mother }}</p>
+				</div>
+				<div class="p-2 flex flex-col sm:flex-row justify-between">
+					<p class="text-sm lg:text-base font-montserrat text-gray-600">{{ litter.puppy_count }} щенков</p>
+					<p class="text-sm lg:text-base font-montserrat text-gray-600">{{ litter.birth_date|date:"d.m.Y" }}</p>
+				</div>
+
+			</div>
+		</a>
+	{% endfor %}
+</div>
