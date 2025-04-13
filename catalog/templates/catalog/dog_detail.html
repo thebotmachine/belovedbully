@@ -128,7 +128,7 @@
 						<div class="mt-7 grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
 
 							{% if dog.pedigree %}
-								<a class="font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none w-full"
+								<a class="font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none w-full"
 								   href="{{ dog.pedigree }}">
 									Родословная
 								</a>
@@ -136,7 +136,7 @@
 
 							{% if dog.category == "puppy" %}
 								{% with message="Здравствуйте. Хочу забронировать щенка " %}
-									<a class="font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none w-full"
+									<a class="font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none w-full"
 									   href="https://wa.me/79688212621?text={{ message|add:dog.name|urlencode }}"
 									   target="_blank" rel="noopener noreferrer">
 										Забронировать

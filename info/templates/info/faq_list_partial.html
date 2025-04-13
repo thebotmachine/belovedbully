@@ -1,38 +1,39 @@
 <div class="mx-auto md:col-span-3">
- <div class="hs-accordion-group space-y-4">
-        {% for faq in faqs %}
-            <div class="hs-accordion hs-accordion-active:bg-gray-100 hs-accordion-active:ring-1 ring-black/5 rounded-xl p-4 {% if forloop.first %}active{% endif %} 
+	<div class="hs-accordion-group space-y-4">
+		{% for faq in faqs %}
+			<div class="hs-accordion bg-gray-100 ring-1 ring-black/5 rounded-3xl p-4
                     transition-all duration-500 ease-out
                     opacity-0 translate-y-10
-                    intersect:opacity-100 intersect:translate-y-0"
-                 id="hs-basic-with-title-and-arrow-stretched-heading-{{ forloop.counter }}"
-                 data-intersect>
-                <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500"
-                        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
-                        aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-{{ forloop.counter }}">
-                    {{ faq.question }}
-                    <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                    <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round">
-                        <path d="m18 15-6-6-6 6"/>
-                    </svg>
-                </button>
-                <div id="hs-basic-with-title-and-arrow-stretched-collapse-{{ forloop.counter }}"
-                     class="hs-accordion-content prose w-full overflow-hidden transition-[height] duration-300 {% if not forloop.first %}hidden{% endif %}"
-                     role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-{{ forloop.counter }}">
-                    <p class="text-gray-800">
-                        {{ faq.answer|safe }}
-                    </p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-    <!-- End Accordion -->
+                    intersect:opacity-100 intersect:translate-y-0 intersect-once"
+			     id="hs-basic-with-title-and-arrow-stretched-heading-{{ forloop.counter }}"
+			     data-intersect>
+				<button class="hs-accordion-toggle group inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-hidden focus:text-gray-500"
+				        aria-expanded="false"
+				        aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-{{ forloop.counter }}">
+					{{ faq.question }}
+					<svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500"
+					     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+					     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+					     stroke-linejoin="round">
+						<path d="m6 9 6 6 6-6"/>
+					</svg>
+					<svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500"
+					     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+					     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+					     stroke-linejoin="round">
+						<path d="m18 15-6-6-6 6"/>
+					</svg>
+				</button>
+				<div id="hs-basic-with-title-and-arrow-stretched-collapse-{{ forloop.counter }}"
+				     class="hs-accordion-content prose max-w-none w-full overflow-hidden transition-[height] duration-300 hidden"
+				     role="region"
+				     aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-{{ forloop.counter }}">
+					<p class="text-gray-800">
+						{{ faq.answer|safe }}
+					</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<!-- End Accordion -->
 </div>

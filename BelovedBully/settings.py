@@ -142,7 +142,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 CACHES = {
     'default': {
-        'BACKEND': os.getenv('CACHES_BACKEND', 'django.core.cache.backends.locate.LocMemCache'),
+        'BACKEND': os.getenv('CACHES_BACKEND', 'django.core.cache.backends.locmem.LocMemCache'),
         'LOCATION': os.getenv('CACHES_LOCATION', 'default'),
     }
 }

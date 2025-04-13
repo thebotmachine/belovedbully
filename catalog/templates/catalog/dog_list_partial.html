@@ -1,37 +1,37 @@
 <div class="grid grid-cols-2 gap-6 md:grid-cols-4 mt-6">
-    {% for dog in dogs %}
-        <div class="opacity-0 translate-y-10 intersect:opacity-100 intersect:translate-y-0
+	{% for dog in dogs %}
+		<div class="opacity-0 translate-y-10 intersect:opacity-100 intersect:translate-y-0 intersect-once
                    transition-all duration-700 ease-out
                    {% cycle 'delay-[100ms]' 'delay-[200ms]' 'delay-[300ms]' 'delay-[400ms]' %}"
-             data-intersect>
-            <a href="{% url 'catalog:dog_detail' dog.slug %}"
-               class="block bg-white shadow-lg rounded-3xl border-b-3 border-solid border-base-300 ring-1 ring-black/5 overflow-hidden transition duration-300 ease-in-out hover:translate-y-[-10px]">
-                <div class="group shrink-0 relative overflow-hidden w-full">
+		     data-intersect>
+			<a href="{% url 'catalog:dog_detail' dog.slug %}"
+			   class="block bg-white shadow-lg rounded-3xl border-b-3 border-solid border-base-300 ring-1 ring-black/5 overflow-hidden transition duration-300 ease-in-out hover:translate-y-[-10px]">
+				<div class="group shrink-0 relative overflow-hidden w-full">
 
-                    {% if dog.status != None %}
-                        <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-[10px] md:text-xs font-montserrat font-medium absolute top-2 right-2 bg-black/20 text-white ring-1 ring-neutral-800/50 ring-inset">
+					{% if dog.status != None %}
+						<span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-[10px] md:text-xs font-montserrat font-medium absolute top-2 right-2 bg-black/20 text-white ring-1 ring-neutral-800/50 ring-inset">
                             {{ dog.get_status_display }}
                         </span>
-                    {% endif %}
+					{% endif %}
 
-                    <img src="{{ dog.images.first.thumbnail.url }}" alt="Dog Image"
-                         class="w-full h-full object-cover"
-                         width="500" height="500"
-                         loading="lazy"/>
+					<img src="{{ dog.images.first.thumbnail.url }}" alt="Dog Image"
+					     class="w-full h-full object-cover"
+					     width="500" height="500"
+					     loading="lazy"/>
 
-                </div>
-                <div class="p-2 text-center">
-                    <h3 class="text-2xl font-lora text-deep-navy lg:text-4xl">{{ dog.name }}</h3>
-                    <div class="p-2 flex flex-row justify-between">
-                        <p class="text-sm lg:text-base font-montserrat text-gray-600">{{ dog.get_gender_display }}</p>
-                        {% if dog.get_age %}
-                            <p class="text-sm lg:text-base font-montserrat text-gray-600">{{ dog.get_age }}</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </a>
-        </div>
-    {% endfor %}
+				</div>
+				<div class="p-2 text-center">
+					<h3 class="text-2xl font-lora text-deep-navy lg:text-4xl">{{ dog.name }}</h3>
+					<div class="p-2 flex flex-row justify-between">
+						<p class="text-sm lg:text-base font-montserrat text-gray-600">{{ dog.get_gender_display }}</p>
+						{% if dog.get_age %}
+							<p class="text-sm lg:text-base font-montserrat text-gray-600">{{ dog.get_age }}</p>
+						{% endif %}
+					</div>
+				</div>
+			</a>
+		</div>
+	{% endfor %}
 </div>
 
 

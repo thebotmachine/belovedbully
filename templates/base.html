@@ -11,7 +11,7 @@
 	<!-- 
       - primary meta tags
     -->
-	<title>BelovedBully - {% block page_title %}Американские булли{% endblock %}</title>
+	<title>{% block page_title %}Американские щенки американского булли{% endblock %} - питомник BelovedBully</title>
 	<meta name="title" content="BelovedBully">
 	<meta name="description" content="BelovedBully">
 
@@ -24,8 +24,9 @@
 
 </head>
 
-<body class="pt-14">
+<body class="pt-16">
 
+<!-- ========== HEADER ========== -->
 <header class="fixed border-b-2 border-solid border-base-300 top-0 inset-x-0 flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full text-sm">
 	<nav class="relative w-full bg-white px-2 py-2.5 lg:flex lg:items-center lg:justify-between lg:py-2.5 lg:px-4 lg:mx-auto">
 		<div class="px-4 lg:max-w-7xl lg:px-0 flex justify-between items-center">
@@ -123,13 +124,15 @@
 
 	</nav>
 </header>
+<!-- ========== END HEADER ========== -->
 
-
+<!-- ========== MAIN ========== -->
 <main>
 	{% block content %}
-		<!-- Здесь будет подставляться контент из дочерних шаблонов -->
+		
 	{% endblock %}
 </main>
+<!-- ========== END MAIN ========== -->
 
 <!-- ========== FOOTER ========== -->
 <footer class="mt-auto border-t-2 border-solid border-base-300 w-full py-10 px-4 sm:px-6 lg:px-8">
