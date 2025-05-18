@@ -27,6 +27,7 @@
     --color-neutral-700: oklch(0.371 0 0);
     --color-neutral-800: oklch(0.269 0 0);
     --color-neutral-900: oklch(0.205 0 0);
+    --color-neutral-950: oklch(0.145 0 0);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -1027,6 +1028,9 @@
   .justify-center {
     justify-content: center;
   }
+  .justify-end {
+    justify-content: flex-end;
+  }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
@@ -1174,6 +1178,10 @@
     border-inline-start-style: var(--tw-border-style);
     border-inline-start-width: 2px;
   }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
   .border-t-2 {
     border-top-style: var(--tw-border-style);
     border-top-width: 2px;
@@ -1241,6 +1249,9 @@
   }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
+  }
+  .bg-gray-50 {
+    background-color: var(--color-gray-50);
   }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
@@ -1351,9 +1362,6 @@
   }
   .pt-22 {
     padding-top: calc(var(--spacing) * 22);
-  }
-  .pt-26 {
-    padding-top: calc(var(--spacing) * 26);
   }
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);
@@ -1796,6 +1804,11 @@
   .focus\:bg-gray-200 {
     &:focus {
       background-color: var(--color-gray-200);
+    }
+  }
+  .focus\:bg-white {
+    &:focus {
+      background-color: var(--color-white);
     }
   }
   .focus\:text-gray-500 {
@@ -2303,6 +2316,12 @@
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
   }
+  .lg\:text-lg {
+    @media (width >= 64rem) {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
   .lg\:text-xl {
     @media (width >= 64rem) {
       font-size: var(--text-xl);
@@ -2317,6 +2336,11 @@
   .dark\:border-neutral-700 {
     @media (prefers-color-scheme: dark) {
       border-color: var(--color-neutral-700);
+    }
+  }
+  .dark\:border-neutral-800 {
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--color-neutral-800);
     }
   }
   .dark\:bg-blue-500 {
@@ -2337,6 +2361,11 @@
   .dark\:bg-neutral-900 {
     @media (prefers-color-scheme: dark) {
       background-color: var(--color-neutral-900);
+    }
+  }
+  .dark\:bg-neutral-950 {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-neutral-950);
     }
   }
   .dark\:fill-neutral-200 {

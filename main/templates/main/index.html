@@ -30,6 +30,7 @@
 				<div class="mt-2 max-w-3xl text-center mx-auto">
 					<p class="text-base text-white/80 font-montserrat">В каждом щенке мы видим любовь!</p>
 				</div>
+
 				<div class="pt-20 text-center">
 					<a class="font-montserrat group py-3 px-4 inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
 					   href="{% url "catalog:puppies_list" %}">
@@ -57,7 +58,7 @@
                     function scrollToNextSection() {
                         const nextSection = document.getElementById("next-section");
                         window.scrollTo({
-                            top: nextSection.offsetTop - 60,  // 100px отступ сверху
+                            top: nextSection.offsetTop - 60,
                             behavior: "smooth"
                         });
                     }
