@@ -27,7 +27,6 @@
     --color-neutral-700: oklch(0.371 0 0);
     --color-neutral-800: oklch(0.269 0 0);
     --color-neutral-900: oklch(0.205 0 0);
-    --color-neutral-950: oklch(0.145 0 0);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -68,6 +67,7 @@
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-spin: spin 1s linear infinite;
     --animate-bounce: bounce 1s infinite;
+    --blur-lg: 16px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -986,6 +986,12 @@
     --tw-translate-y: calc(var(--spacing) * 10);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .scale-110 {
+    --tw-scale-x: 110%;
+    --tw-scale-y: 110%;
+    --tw-scale-z: 110%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
   }
@@ -1027,9 +1033,6 @@
   }
   .justify-center {
     justify-content: center;
-  }
-  .justify-end {
-    justify-content: flex-end;
   }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
@@ -1178,10 +1181,6 @@
     border-inline-start-style: var(--tw-border-style);
     border-inline-start-width: 2px;
   }
-  .border-t {
-    border-top-style: var(--tw-border-style);
-    border-top-width: 1px;
-  }
   .border-t-2 {
     border-top-style: var(--tw-border-style);
     border-top-width: 2px;
@@ -1250,9 +1249,6 @@
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
-  .bg-gray-50 {
-    background-color: var(--color-gray-50);
-  }
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
@@ -1291,8 +1287,14 @@
   .fill-black {
     fill: var(--color-black);
   }
+  .object-contain {
+    object-fit: contain;
+  }
   .object-cover {
     object-fit: cover;
+  }
+  .object-scale-down {
+    object-fit: scale-down;
   }
   .p-0\.5 {
     padding: calc(var(--spacing) * 0.5);
@@ -1536,6 +1538,10 @@
   }
   .blur {
     --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .blur-lg {
+    --tw-blur: blur(var(--blur-lg));
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .brightness-60 {
@@ -1804,11 +1810,6 @@
   .focus\:bg-gray-200 {
     &:focus {
       background-color: var(--color-gray-200);
-    }
-  }
-  .focus\:bg-white {
-    &:focus {
-      background-color: var(--color-white);
     }
   }
   .focus\:text-gray-500 {
@@ -2316,12 +2317,6 @@
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
   }
-  .lg\:text-lg {
-    @media (width >= 64rem) {
-      font-size: var(--text-lg);
-      line-height: var(--tw-leading, var(--text-lg--line-height));
-    }
-  }
   .lg\:text-xl {
     @media (width >= 64rem) {
       font-size: var(--text-xl);
@@ -2336,11 +2331,6 @@
   .dark\:border-neutral-700 {
     @media (prefers-color-scheme: dark) {
       border-color: var(--color-neutral-700);
-    }
-  }
-  .dark\:border-neutral-800 {
-    @media (prefers-color-scheme: dark) {
-      border-color: var(--color-neutral-800);
     }
   }
   .dark\:bg-blue-500 {
@@ -2361,11 +2351,6 @@
   .dark\:bg-neutral-900 {
     @media (prefers-color-scheme: dark) {
       background-color: var(--color-neutral-900);
-    }
-  }
-  .dark\:bg-neutral-950 {
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--color-neutral-950);
     }
   }
   .dark\:fill-neutral-200 {
@@ -2634,6 +2619,21 @@
   syntax: "*";
   inherits: false;
   initial-value: 0;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
 }
 @property --tw-rotate-x {
   syntax: "*";

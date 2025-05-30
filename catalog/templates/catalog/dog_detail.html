@@ -22,10 +22,16 @@
 						<div class="hs-carousel relative overflow-hidden w-full h-full rounded-3xl ring-8 ring-black/5">
 							<div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
 								{% for image in dog.images.all %}
-									<div class="hs-carousel-slide w-full h-full flex-shrink-0 relative ">
+									<div class="hs-carousel-slide w-full h-full flex-shrink-0 relative">
+										<!-- Размытый фон -->
+										<div class="absolute inset-0 overflow-hidden">
+											<img src="{{ image.image.url }}" alt="Blurred Background"
+											     class="w-full h-full object-cover scale-110 blur-lg" loading="lazy">
+										</div>
+
+										<!-- Основное изображение -->
 										<img src="{{ image.image.url }}" alt="Dog Image"
-										     class="absolute inset-0 w-full h-full object-cover "
-										     loading="lazy">
+										     class="absolute inset-0 w-full h-full object-contain z-10" loading="lazy">
 									</div>
 								{% endfor %}
 							</div>
