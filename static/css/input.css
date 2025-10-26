@@ -40,3 +40,7 @@
         color: var(--color-deep-navy);
     }
 }
+
+html {
+  overflow-y: scroll;
+}

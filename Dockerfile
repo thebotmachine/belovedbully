@@ -44,7 +44,11 @@ USER appuser
 EXPOSE 8000
 
 USER root
-RUN mkdir -p /app/staticfiles /app/media /app/media/dogimage /app/media/litterimage /app/media/articleimage && \
+RUN mkdir -p /app/staticfiles  \
+            /app/media  \
+            /app/media/dogimage  \
+            /app/media/litterimage  \
+            /app/media/articleimage && \
     chown -R appuser:appuser /app/staticfiles /app/media
 USER appuser
 

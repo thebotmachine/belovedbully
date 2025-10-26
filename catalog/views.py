@@ -67,7 +67,7 @@ class DogDetailView(DogFirstImageMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = f"{self.object.name}"  # Динамическое имя собаки
+        context['page_title'] = f"{self.object.name}"
         return context
 
 
@@ -75,9 +75,9 @@ class AnnotatedLitterMixin:
     @staticmethod
     def get_annotated_queryset():
         return Litter.objects.annotate(
-            puppy_count=Count('dog'),
-            male_puppies=Count('dog', filter=Q(dog__gender='M')),
-            female_puppies=Count('dog', filter=Q(dog__gender='F'))
+            puppy_count=Count('puppies'),  # Измените 'dog' на 'puppies'
+            male_puppies=Count('puppies', filter=Q(puppies__gender='M')),  # Измените 'dog' на 'puppies'
+            female_puppies=Count('puppies', filter=Q(puppies__gender='F'))  # Измените 'dog' на 'puppies'
         )
 
 
@@ -87,7 +87,10 @@ class LitterListView(AnnotatedLitterMixin, ListView):
     template_name = 'catalog/litter_list.html'
 
     def get_queryset(self):
-        return self.get_annotated_queryset()
+        return self.get_annotated_queryset().prefetch_related(
+            'father__images',
+            'mother__images'
+        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -95,13 +98,24 @@ class LitterListView(AnnotatedLitterMixin, ListView):
         return context
 
 
-class LitterDetailView(DetailView):
+class LitterDetailView(AnnotatedLitterMixin, DetailView):
     model = Litter
     context_object_name = 'litter'
     template_name = 'catalog/litter_detail.html'
 
+    def get_queryset(self):
+        return self.get_annotated_queryset().prefetch_related(
+            'puppies__images',
+            'father__images',
+            'mother__images'
+        )
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = f"Помёт {self.object}"
+
+        # Добавляем щенков в контекст под именем 'dogs'
+        context['dogs'] = self.object.puppies.all().prefetch_related('images')
+
         return context
 

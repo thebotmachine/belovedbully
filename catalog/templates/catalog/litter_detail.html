@@ -10,8 +10,9 @@
 
 {% block content %}
 	<div class="bg-[#EEE7DF]">
-		<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-7xl lg:px-8">
-			<div class="bg-white grid grid-cols-1 lg:grid-cols-2 shadow-lg rounded-3xl border-b-3 border-solid border-base-300 ring-1 ring-black/5">
+		<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-8 lg:max-w-6xl lg:px-8">
+
+			<div class="bg-white grid grid-cols-1 lg:grid-cols-2 lg:lg:auto-rows-auto shadow-lg rounded-3xl border-b-3 border-solid border-base-300 ring-1 ring-black/5">
 				<div class="p-4 gap-8">
 					<!-- Slider -->
 					<div data-hs-carousel='{
@@ -65,7 +66,7 @@
 					<div class="mt-4 space-y-3">
 						<div class="flex justify-between border-b pb-2 border-gray-200">
 							<div class="text-gray-600 font-montserrat">Дата рождения:</div>
-							<div class="font-medium text-gray-800 font-montserrat">{{ litter.get_formatted_birth_date }}</div>
+							<div class="font-medium text-gray-800 font-montserrat">{{ litter.birth_date|date:"d.m.Y" }}</div>
 						</div>
 
 						<div class="flex justify-between border-b pb-2 border-gray-200">
@@ -83,18 +84,7 @@
 							<div class="font-medium text-gray-800 font-montserrat">{{ litter.female_puppies }}</div>
 						</div>
 
-						<!-- Buttons -->
-						<div class="mt-7 grid grid-cols-2 gap-3 w-full">
-							<a class=" font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-							   href="#">
-								Родословная
-							</a>
-							<a class="font-montserrat py-3 px-4 justify-center inline-flex items-center gap-x-1 text-sm font-medium rounded-2xl border border-gray-200 bg-white text-blue-600 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-							   href="#">
-								Забронировать
-							</a>
-						</div>
-						<!-- End Buttons -->
+
 					</div>
 
 				</div>

@@ -7,7 +7,7 @@ class DogImageInline(StackedInline):
     model = DogImage
     extra = 1
     ordering = ['-id']
-    fields = ['image']
+    fields = ['image', 'is_avatar']
 
 
 @admin.register(Dog)

@@ -12,6 +12,7 @@
   "description": "",
   "dependencies": {
     "@preline/carousel": "^3.0.0",
+    "@preline/overlay": "^3.2.3",
     "@tailwindcss/cli": "^4.0.9",
     "htmx.org": "^1.9.12",
     "preline": "^3.0.0",

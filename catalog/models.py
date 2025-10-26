@@ -49,7 +49,7 @@ class Dog(TimeStampedModel):
     color = models.CharField("Окрас", max_length=100, null=True, blank=True)
     pedigree = models.URLField("Родословная", max_length=500, null=True, blank=True)
     dog_type = models.CharField("Тип", max_length=100, null=True, blank=True)
-    litter = models.ForeignKey('Litter',on_delete=models.SET_NULL,null=True,blank=True,verbose_name="Помёт")
+    litter = models.ForeignKey('Litter',on_delete=models.SET_NULL,null=True,blank=True,verbose_name="Помёт", related_name='puppies')
     price = models.DecimalField("Стоимость", max_digits=10, decimal_places=2, null=True, blank=True)
 
     def get_age(self):
@@ -103,6 +103,16 @@ class Dog(TimeStampedModel):
 
         super().save(*args, **kwargs)
 
+    @property
+    def avatar(self):
+        """Главное фото (аватар собаки)."""
+        return self.images.filter(is_avatar=True).first()
+
+    @property
+    def photos(self):
+        """Остальные фотографии (галерея)."""
+        return self.images.filter(is_avatar=False)
+
     class Meta:
         ordering = ['-id']
         verbose_name = "Собака"
@@ -131,16 +141,11 @@ class DogImage(TimeStampedModel):
         processors=[ResizeToFill(600, 600)],
         format='WEBP',
     )
+    is_avatar = models.BooleanField("Аватар", default=False)
 
     def save(self, *args, **kwargs):
-        if self.pk:
-            try:
-                old_instance = DogImage.objects.get(pk=self.pk)
-                if old_instance.image and old_instance.image != self.image:
-                    if os.path.isfile(old_instance.image.path):
-                        os.remove(old_instance.image.path)
-            except DogImage.DoesNotExist:
-                pass
+        if self.is_avatar:
+            DogImage.objects.filter(dog=self.dog, is_avatar=True).exclude(pk=self.pk).update(is_avatar=False)
         super().save(*args, **kwargs)
 
 
@@ -151,12 +156,12 @@ class DogImage(TimeStampedModel):
 
 
     class Meta:
-        ordering = ['-id']
-        verbose_name = "Изображение"
-        verbose_name_plural = "Изображения"
+        ordering = ['-is_avatar', '-id']
+        verbose_name = "Фотография"
+        verbose_name_plural = "Фотографии"
 
     def __str__(self):
-        return f"{self.dog.name}"
+        return f"{self.dog.name} ({'аватар' if self.is_avatar else 'галерея'})"
 
 @receiver(pre_delete, sender=Dog)
 def delete_dog_images(sender, instance, **kwargs):
