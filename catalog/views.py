@@ -32,8 +32,11 @@ class DogListView(DogFirstImageMixin, ListView):
         queryset = Dog.objects.all()
 
         if self.category == 'puppy':
-            status = self.status_filter if self.status_filter else 'available'
-            queryset = queryset.filter(status=status)
+            if self.status_filter == 'archive':
+                queryset = queryset.filter(status__in=['sold', 'reserved'])
+            else:
+                status = self.status_filter if self.status_filter else 'available'
+                queryset = queryset.filter(status=status)
 
         if self.category:
             queryset = queryset.filter(category=self.category)

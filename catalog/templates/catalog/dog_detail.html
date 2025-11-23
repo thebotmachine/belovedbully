@@ -101,10 +101,10 @@
 
 				<!-- Блок 3 -->
 				<div class="rounded-3xl lg:col-span-2 lg:row-start-2 p-4">
-					<div class="columns-2 gap-2 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-2 rounded-3xl">
+					<div class="columns-2 gap-1 md:columns-3 lg:columns-4 rounded-3xl">
 						{% if dog.images.all %}
 							{% for img in dog.images.all %}
-								<div class="overflow-hidden rounded-3xl mb-2">
+								<div class="overflow-hidden mb-1">
 									<img src="{{ img.image.url }}"
 									     alt="{{ dog.name }} — фото {{ forloop.counter }}"
 									     class="w-full h-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-105"
@@ -140,7 +140,7 @@
 
                     // Очистим модалку и вставим новое изображение
                     modal.innerHTML = `
-                <div class="rounded-3xl overflow-hidden shadow-lg max-w-3xl w-full mx-auto">
+                <div class=" overflow-hidden shadow-lg max-w-3xl w-full mx-auto">
                     <img src="${imgSrc}" alt="${imgAlt}" class="w-full h-auto object-contain">
                 </div>
             `;
