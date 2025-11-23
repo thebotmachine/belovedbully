@@ -107,7 +107,7 @@
 								<div class="overflow-hidden mb-1">
 									<img src="{{ img.image.url }}"
 									     alt="{{ dog.name }} — фото {{ forloop.counter }}"
-									     class="w-full h-full object-cover transform transition-transform duration-300 ease-in-out hover:scale-105"
+									     class="w-full h-full object-cover rounded-3xl transform transition-transform duration-300 ease-in-out hover:scale-105"
 									     loading="lazy" aria-haspopup="dialog" aria-expanded="false"
 									     aria-controls="hs-scale-animation-modal"
 									     data-hs-overlay="#hs-scale-animation-modal">
@@ -140,7 +140,7 @@
 
                     // Очистим модалку и вставим новое изображение
                     modal.innerHTML = `
-                <div class=" overflow-hidden shadow-lg max-w-3xl w-full mx-auto">
+                <div class=" overflow-hidden shadow-lg max-w-3xl w-full mx-auto rounded-3xl">
                     <img src="${imgSrc}" alt="${imgAlt}" class="w-full h-auto object-contain rounded-3xl">
                 </div>
             `;
