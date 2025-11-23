@@ -60,15 +60,16 @@
 						{% endif %}
 
 						{% if dog.litter %}
-    <div class="flex justify-between border-b pb-2 border-gray-200">
-        <div class="text-gray-600 font-montserrat">Родители:</div>
-        <div class="font-medium text-lg font-montserrat text-right">
-            <a href="{% url 'catalog:litter_detail' dog.litter.slug %}" class="text-blue-600 hover:text-blue-800">
-                {{ dog.litter }}
-            </a>
-        </div>
-    </div>
-{% endif %}
+							<div class="flex justify-between border-b pb-2 border-gray-200">
+								<div class="text-gray-600 font-montserrat">Родители:</div>
+								<div class="font-medium text-lg font-montserrat text-right">
+									<a href="{% url 'catalog:litter_detail' dog.litter.slug %}"
+									   class="text-blue-600 hover:text-blue-800">
+										{{ dog.litter }}
+									</a>
+								</div>
+							</div>
+						{% endif %}
 
 						{% if dog.price %}
 							<div class="flex justify-between border-b pb-2 border-gray-200">
@@ -101,16 +102,20 @@
 
 				<!-- Блок 3 -->
 				<div class="rounded-3xl lg:col-span-2 lg:row-start-2 p-4">
-					<div class="columns-2 gap-1 md:columns-3 lg:columns-4 rounded-3xl">
+					<div class="columns-2 gap-1 md:columns-3 lg:columns-4">
 						{% if dog.images.all %}
 							{% for img in dog.images.all %}
-								<div class="overflow-hidden mb-1">
-									<img src="{{ img.image.url }}"
-									     alt="{{ dog.name }} — фото {{ forloop.counter }}"
-									     class="w-full h-full object-cover rounded-3xl transform transition-transform duration-300 ease-in-out hover:scale-105"
-									     loading="lazy" aria-haspopup="dialog" aria-expanded="false"
-									     aria-controls="hs-scale-animation-modal"
-									     data-hs-overlay="#hs-scale-animation-modal">
+								<div class="overflow-hidden mb-1 rounded-3xl">
+									<img
+											src="{{ img.image.url }}"
+											alt="{{ dog.name }} — фото {{ forloop.counter }}"
+											class="w-full h-auto object-cover transform transition-transform duration-300 ease-in-out hover:scale-105"
+											loading="lazy"
+											aria-haspopup="dialog"
+											aria-expanded="false"
+											aria-controls="hs-scale-animation-modal"
+											data-hs-overlay="#hs-scale-animation-modal"
+									>
 								</div>
 							{% endfor %}
 						{% endif %}
