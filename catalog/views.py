@@ -26,7 +26,7 @@ class DogListView(DogFirstImageMixin, ListView):
     partial_template_name = 'catalog/dog_list_partial.html'
 
     category = None
-    status_filter = None  # Новый атрибут для фильтрации статуса
+    status_filter = None
 
     def get_queryset(self):
         queryset = Dog.objects.all()

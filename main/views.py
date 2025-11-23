@@ -9,7 +9,7 @@ class MainPageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        puppies = Dog.objects.filter(category='puppy')[:4]
+        puppies = Dog.objects.filter(category='puppy', status='available')[:4]
         adults = Dog.objects.filter(category='adult')[:4]
         faqs = FAQ.objects.all()
 
