@@ -13,6 +13,13 @@ export default defineNuxtConfig({
         description: 'Краткое описание сайта',
         defaultLocale: 'ru',
     },
+
+    vite: {
+        server: {
+            allowedHosts: ['belovedbully.ru', 'www.belovedbully.ru']
+        }
+    },
+
     fonts: {
         defaults: {
             weights: [400]
