@@ -1,0 +1,17 @@
+<script setup>
+useBreadcrumbItems({
+  overrides: [
+    { label: 'Главная' }
+  ]
+})
+</script>
+
+<template>
+  <UApp>
+    <NuxtLayout>
+      <UMain class="relative">
+        <NuxtPage />
+      </UMain>
+    </NuxtLayout>
+  </UApp>
+</template>

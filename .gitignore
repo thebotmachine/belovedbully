@@ -1,0 +1,17 @@
+.env
+.env.prod
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+backend/staticfiles/
+backend/media/
+*.sqlite3
+
+.idea/
+.vscode/
+
+.DS_Store
+Thumbs.db
