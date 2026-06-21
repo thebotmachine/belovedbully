@@ -16,7 +16,6 @@ services:
     build:
       context: ./backend
     volumes:
-      - ./backend:/app
       - media_data:/app/media
       - static_data:/app/staticfiles
     env_file:
@@ -36,7 +35,6 @@ services:
     build:
       context: ./frontend
     volumes:
-      - ./frontend:/app
       - /app/node_modules
     expose:
       - "3000"
