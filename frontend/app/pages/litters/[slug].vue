@@ -2,7 +2,7 @@
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
 
-const {data: litter, pending, error} = await useLitter(slug)
+const {data: litter, pending, error} = useLitter(slug)
 
 useSeoMeta({
   title: () => `${litter.value.name}`,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 
-const {data: litters, pending, error} = await useLitters()
+const {data: litters, pending, error} = useLitters()
 
 const items = useBreadcrumbItems()
 definePageMeta({
