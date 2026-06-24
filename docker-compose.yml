@@ -18,7 +18,7 @@ services:
     volumes:
       - media_data:/app/media
       - static_data:/app/staticfiles
-      - ./backend:/app
+
     env_file:
       - .env
     expose:
@@ -37,7 +37,7 @@ services:
       context: ./frontend
     volumes:
       - /app/node_modules
-      - ./frontend:/app
+
     expose:
       - "3000"
 
