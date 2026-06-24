@@ -76,7 +76,7 @@ const cardVariants = {
       v-slot="{ item }"
       :items="dogs"
       arrows
-      :ui="{ item: 'basis-[70%] p-4 gap-1' }"
+      :ui="{ item: 'basis-[70%] gap-1' }"
       class="mx-auto max-w-sm md:hidden"
   >
     <Motion
