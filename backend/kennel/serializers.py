@@ -81,7 +81,7 @@ class DogListSerializer(serializers.ModelSerializer):
         return {'value': obj.gender, 'label': obj.get_gender_display()}
 
     def get_cover(self, obj):
-        cover_media = obj.media.filter(is_cover=True).first()
+        cover_media = obj.cover_media[0] if obj.cover_media else None
         if cover_media:
             return DogMediaSerializer(cover_media, context=self.context).data
         return None
