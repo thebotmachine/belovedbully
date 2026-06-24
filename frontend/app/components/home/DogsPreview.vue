@@ -46,7 +46,7 @@ const cardVariants = {
         :whileInView="{ opacity: 1, y: 0 }"
         :transition="{ duration: 0.6, delay: 0.5 }"
         :inViewOptions="{ once: true, amount: 0.2 }"
-        class="sm:text-lg text-toned"
+        class="sm:text-lg text-toned text-center"
     >
       {{ subtitle }}
     </Motion>
