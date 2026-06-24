@@ -71,24 +71,26 @@ const cardVariants = {
     </Motion>
   </Motion>
 
-  <UCarousel
-      v-if="dogs.length"
-      v-slot="{ item }"
-      :items="dogs"
-      arrows
-      :ui="{ item: 'basis-[70%] gap-1' }"
-      class="mx-auto max-w-sm md:hidden"
-  >
-    <Motion
-        tag="div"
-        :variants="cardVariants"
-        initial="hidden"
-        whileInView="visible"
-        :inViewOptions="{ once: true, amount: 0.3 }"
+  <div class="overflow-hidden w-full md:hidden">
+    <UCarousel
+        v-if="dogs.length"
+        v-slot="{ item }"
+        :items="dogs"
+        arrows
+        :ui="{ item: 'basis-[70%] p-4 gap-1' }"
+        class="mx-auto max-w-sm"
     >
-      <DogsCard :dog="item" :fromContext="fromContext"/>
-    </Motion>
-  </UCarousel>
+      <Motion
+          tag="div"
+          :variants="cardVariants"
+          initial="hidden"
+          whileInView="visible"
+          :inViewOptions="{ once: true, amount: 0.3 }"
+      >
+        <DogsCard :dog="item" :fromContext="fromContext"/>
+      </Motion>
+    </UCarousel>
+  </div>
 
   <div class="flex justify-center mt-6">
     <UButton :to="to" color="neutral" size="lg" trailing-icon="i-lucide-chevron-right">
