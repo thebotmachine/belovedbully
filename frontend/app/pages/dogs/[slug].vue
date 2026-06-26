@@ -2,7 +2,7 @@
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
 
-const {data: dog, pending, error} = await useDog(slug)
+const {data: dog, pending, error} = useDog(slug)
 
 const {formatDate, formatAge} = useFormatDate()
 
@@ -30,6 +30,15 @@ const selectedMedia = ref<Media | null>(null)
 function openModal(media: Media) {
   selectedMedia.value = media
   isOpen.value = true
+}
+
+
+if (import.meta.server) {
+  console.log('SERVER DOG', dog.value)
+}
+
+if (import.meta.client) {
+  console.log('CLIENT DOG', dog.value)
 }
 </script>
 

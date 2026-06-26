@@ -77,8 +77,20 @@ class LitterListView(ListAPIView):
 
 
 class LitterDetailView(RetrieveAPIView):
-    queryset = Litter.objects.annotate(puppies_count_db=Count('puppies'),
-                                       males_count_db=Count('puppies', filter=Q(puppies__gender='male')),
-                                       females_count_db=Count('puppies', filter=Q(puppies__gender='female'))).all()
+    queryset = (
+        Litter.objects
+        .annotate(
+            puppies_count_db=Count('puppies'),
+            males_count_db=Count('puppies', filter=Q(puppies__gender='male')),
+            females_count_db=Count('puppies', filter=Q(puppies__gender='female')),
+        )
+        .prefetch_related(
+            Prefetch(
+                'puppies__media',
+                queryset=DogMedia.objects.filter(is_cover=True),
+                to_attr='cover_media'
+            )
+        )
+    )
     serializer_class = LitterDetailSerializer
     lookup_field = 'slug'

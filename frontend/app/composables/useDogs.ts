@@ -1,11 +1,9 @@
 import type {Dog, PaginatedResponse} from '~/types/dog'
 
 export const useDogs = (endpoint: string) => {
-    const config = useRuntimeConfig()
     const route = useRoute()
     const router = useRouter()
 
-    const apiBase = config.public.apiBase as string
     const itemsPerPage = 3
 
     const page = computed({
