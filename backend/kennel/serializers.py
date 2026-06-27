@@ -11,17 +11,31 @@ class DogMediaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DogMedia
-        fields = ['id', 'url', 'thumb_url', 'medium_url', 'large_url', 'webp_url', 'media_type', 'is_cover', 'order']
+        fields = (
+            'id',
+            'url',
+            'thumb_url',
+            'medium_url',
+            'large_url',
+            'webp_url',
+            'media_type',
+            'is_cover',
+            'order',
+        )
 
     def _get_variant_url(self, obj, attr):
-        if obj.media_type != DogMedia.MediaType.IMAGE or not obj.file:
+        if obj.media_type != DogMedia.MediaType.IMAGE:
             return None
-        request = self.context.get('request')
-        url = getattr(obj, attr).url
-        return request.build_absolute_uri(url) if request else url
+
+        field = getattr(obj, attr)
+
+        if not field:
+            return None
+
+        return field.url
 
     def get_url(self, obj):
-        return self._get_variant_url(obj, 'file') if obj.file else None
+        return self._get_variant_url(obj, 'file')
 
     def get_thumb_url(self, obj):
         return self._get_variant_url(obj, 'thumb')
