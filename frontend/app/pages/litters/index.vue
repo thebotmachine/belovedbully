@@ -15,7 +15,7 @@ const sortOptions = [
 </script>
 
 <template>
-  <div class="h-screen bg-elevated">
+  <div class="bg-elevated">
     <UContainer class="py-8 space-y-4">
       <UBreadcrumb :items="items" class="mb-8"/>
       <div class="flex flex-row gap-2">

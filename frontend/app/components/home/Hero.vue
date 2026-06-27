@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div class="relative min-h-screen overflow-hidden bg-transparent">
+<div class="relative min-h-dvh overflow-hidden bg-transparent">
     <img
         src="/compressed_image.jpeg"
         alt="BelovedBully питомник"

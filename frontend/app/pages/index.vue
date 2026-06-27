@@ -66,7 +66,7 @@ const {dogs: producers} = useDogs('/producers/')
   <UPageSection :ui="{ root: 'bg-elevated' }">
     <HomeDogsPreview
         title="Наши производители"
-        subtitle="Которые гарантируют здоровье и красоту щенков"
+        subtitle="Основа будущих поколений американских булли"
         :dogs="producers"
         fromContext="producers"
         to="/producers"
