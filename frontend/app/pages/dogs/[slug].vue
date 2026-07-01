@@ -7,8 +7,8 @@ const {data: dog, pending, error} = useDog(slug)
 const {formatDate, formatAge} = useFormatDate()
 
 useSeoMeta({
-  title: () => `${dog.value.name}`,
-  description: () => ``,
+  title: () => dog.value?.name ?? 'Собака',
+  description: () => '',
 });
 
 
@@ -33,13 +33,7 @@ function openModal(media: Media) {
 }
 
 
-if (import.meta.server) {
-  console.log('SERVER DOG', dog.value)
-}
-
-if (import.meta.client) {
-  console.log('CLIENT DOG', dog.value)
-}
+const galleryHeights = ['h-72', 'h-48', 'h-64', 'h-56', 'h-80', 'h-40', 'h-60', 'h-52']
 </script>
 
 <template>
@@ -47,7 +41,81 @@ if (import.meta.client) {
     <UContainer class="py-8">
       <UBreadcrumb :items="breadcrumbItems" class="mb-8"/>
 
-      <div v-if="pending">Загрузка...</div>
+      <div
+          v-if="pending"
+          class="bg-default border-b-3 border-accented ring-1 ring-accented/40 shadow-lg rounded-xl p-4"
+      >
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+
+          <USkeleton class="aspect-square w-full rounded-lg"/>
+
+          <div class="space-y-4">
+
+            <USkeleton class="h-11 w-2/3 rounded-md"/>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <USkeleton class="h-6 w-20 rounded-full"/>
+              <USkeleton class="h-6 w-24 rounded-full"/>
+              <USkeleton class="h-6 w-16 rounded-full"/>
+            </div>
+
+
+            <div class="space-y-2 max-w-prose">
+              <USkeleton class="h-4 w-full"/>
+              <USkeleton class="h-4 w-full"/>
+              <USkeleton class="h-4 w-3/4"/>
+            </div>
+
+
+            <div class="bg-muted rounded-xl p-4 space-y-3">
+              <div class="flex justify-between items-center">
+                <USkeleton class="h-4 w-28"/>
+                <USkeleton class="h-4 w-20"/>
+              </div>
+              <USeparator :ui="{ border: 'border-accented' }"/>
+
+              <div class="flex justify-between items-center">
+                <USkeleton class="h-4 w-16"/>
+                <USkeleton class="h-4 w-20"/>
+              </div>
+              <USeparator :ui="{ border: 'border-accented' }"/>
+
+              <div class="flex justify-between items-center">
+                <USkeleton class="h-4 w-20"/>
+                <USkeleton class="h-4 w-16"/>
+              </div>
+              <USeparator :ui="{ border: 'border-accented' }"/>
+
+              <div class="flex justify-between items-center">
+                <USkeleton class="h-4 w-16"/>
+                <USkeleton class="h-4 w-24"/>
+              </div>
+            </div>
+
+
+            <div class="flex flex-col md:flex-row gap-2">
+              <USkeleton class="h-12 w-full rounded-md"/>
+              <USkeleton class="h-12 w-full rounded-md"/>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div>
+          <div class="flex justify-center py-8">
+            <USkeleton class="h-10 w-56 rounded-md"/>
+          </div>
+          <div class="columns-2 gap-2 md:gap-4 lg:columns-3 xl:columns-4">
+            <USkeleton
+                v-for="(h, i) in galleryHeights"
+                :key="i"
+                class="break-inside-avoid mb-2 md:mb-4 w-full rounded-lg"
+                :class="h"
+            />
+          </div>
+        </div>
+      </div>
 
       <div v-else-if="error">Не удалось загрузить собаку.</div>
 
