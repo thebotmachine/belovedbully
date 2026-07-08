@@ -1,0 +1,32 @@
+http://localhost {
+
+    handle_path /static/* {
+        root * /app/staticfiles
+        file_server
+    }
+
+    handle_path /media/* {
+        root * /app/media
+        file_server
+    }
+
+    handle /admin/* {
+        reverse_proxy backend:8000 {
+            header_up Host {host}
+        }
+    }
+
+    handle /api/v1/* {
+        reverse_proxy backend:8000 {
+            header_up Host {host}
+        }
+    }
+
+    handle {
+        reverse_proxy frontend:3000
+    }
+
+    log {
+        output file /var/log/caddy/access.log
+    }
+}

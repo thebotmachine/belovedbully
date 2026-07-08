@@ -27,7 +27,7 @@ const to = computed(() => {
 <template>
     <NuxtLink :to="to">
       <div
-          class="group overflow-hidden rounded-xl border-b-3 border-accented bg-default shadow-md ring-1 ring-accented/20 duration-300 hover:shadow-lg hover:ring-accented/80 transition-color">
+          class="group overflow-hidden rounded-xl border-b-3 border-accented bg-default md:shadow-md ring-1 ring-accented/20 md:duration-300 md:hover:shadow-lg md:hover:ring-accented/80 md:transition-color">
         <div class="relative aspect-square overflow-hidden bg-muted">
           <img
               v-if="dog.cover"

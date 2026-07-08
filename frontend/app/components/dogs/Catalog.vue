@@ -32,9 +32,9 @@ const sortOptions = [
     <UContainer class="py-8 space-y-4">
       <UBreadcrumb :items="breadcrumbItems" class="mb-8" />
 
-      <div class="flex flex-row gap-2">
-        <AdaptiveSelect v-model="selectedGender" label="Пол" :options="genderOptions" class="w-48" />
-        <AdaptiveSelect v-model="ordering" label="Сортировка" :options="sortOptions" class="w-48" />
+      <div class="flex flex-col md:flex-row gap-4">
+        <AdaptiveSelect v-model="selectedGender" label="Пол" :options="genderOptions" class="w-full md:w-48" />
+        <AdaptiveSelect v-model="ordering" label="Сортировка" :options="sortOptions" class="w-full md:w-48" />
       </div>
 
       <DogsGrid :dogs="dogs" :fromContext="props.fromContext" />

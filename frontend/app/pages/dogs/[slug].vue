@@ -281,7 +281,7 @@ const galleryHeights = ['h-72', 'h-48', 'h-64', 'h-56', 'h-80', 'h-40', 'h-60', 
                 <UButton
                     icon="i-lucide-x"
                     color="neutral"
-                    variant="subtle"
+                    variant="outline"
                     size="xl"
                     class="absolute top-4 right-4 z-50"
                     @click="isOpen = false"

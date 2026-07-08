@@ -75,20 +75,14 @@ const cardVariants = {
     <UCarousel
         v-if="dogs.length"
         v-slot="{ item }"
+        class-names
         :items="dogs"
         arrows
-        :ui="{ item: 'basis-[70%] p-4 gap-1' }"
+        :ui="{ item: 'basis-[70%] gap-1 transition-opacity [&:not(.is-snapped)]:opacity-20 duration-300' }"
         class="mx-auto max-w-sm"
     >
-      <Motion
-          tag="div"
-          :variants="cardVariants"
-          initial="hidden"
-          whileInView="visible"
-          :inViewOptions="{ once: true, amount: 0.3 }"
-      >
         <DogsCard :dog="item" :fromContext="fromContext"/>
-      </Motion>
+
     </UCarousel>
   </div>
 

@@ -36,10 +36,11 @@ services:
     build:
       context: ./frontend
     volumes:
+      - ./frontend:/app
       - /app/node_modules
-
     expose:
       - "3000"
+
 
 
   caddy:
@@ -49,7 +50,7 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy/Caddyfile.prod:/etc/caddy/Caddyfile:ro
       - static_data:/app/staticfiles:ro
       - media_data:/app/media:ro
       - caddy_data:/data

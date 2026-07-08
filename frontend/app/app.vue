@@ -8,6 +8,7 @@ useBreadcrumbItems({
 
 <template>
   <UApp>
+    <NuxtLoadingIndicator color="var(--ui-color-neutral-900)"/>
     <NuxtLayout>
       <UMain class="relative">
         <NuxtPage />
