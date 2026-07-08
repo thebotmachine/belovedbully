@@ -78,11 +78,10 @@ const cardVariants = {
         class-names
         :items="dogs"
         arrows
-        :ui="{ item: 'basis-[70%] gap-1 transition-opacity [&:not(.is-snapped)]:opacity-20 duration-300' }"
+        :ui="{ item: 'basis-[70%] gap-1 ' }"
         class="mx-auto max-w-sm"
     >
         <DogsCard :dog="item" :fromContext="fromContext"/>
-
     </UCarousel>
   </div>
 
