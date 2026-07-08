@@ -1,8 +1,12 @@
 <script setup>
 useBreadcrumbItems({
   overrides: [
-    { label: 'Главная' }
+    {label: 'Главная'}
   ]
+})
+
+useHead({
+  titleTemplate: '%s — Питомник американских булли BelovedBully',
 })
 </script>
 
@@ -11,7 +15,7 @@ useBreadcrumbItems({
     <NuxtLoadingIndicator color="var(--ui-color-neutral-900)"/>
     <NuxtLayout>
       <UMain class="relative">
-        <NuxtPage />
+        <NuxtPage/>
       </UMain>
     </NuxtLayout>
   </UApp>

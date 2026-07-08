@@ -79,6 +79,15 @@ const cardVariants = {
 const {dogs: puppies} = useDogs('/puppies/')
 
 const {dogs: producers} = useDogs('/producers/')
+
+useSeoMeta({
+  titleTemplate: '%s',
+  title: 'Питомник американских булли BelovedBully в Москве - купить щенка',
+  description: 'Щенки американского булли от титулованных родителей в питомнике BelovedBully (Москва). Фото, документы, доставка по России. Помогаем выбрать и бронируем щенка по видеосвязи.',
+  ogTitle: 'Питомник американских булли BelovedBully - купить щенка',
+  ogDescription: 'Щенки американского булли от титулованных родителей. Документы, доставка по России.',
+  ogType: 'website',
+})
 </script>
 
 <template>

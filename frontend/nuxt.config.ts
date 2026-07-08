@@ -8,9 +8,9 @@ export default defineNuxtConfig({
         colorMode: false,
     },
     site: {
-        url: 'https://belovedbully.ru/',
+        url: 'https://belovedbully.ru',
         name: 'Питомник BelovedBully',
-        description: 'Краткое описание сайта',
+        description: 'Питомник американских булли BelovedBully в Москве - щенки от титулованных родителей, документы, доставка по России. Помогаем выбрать щенка и сопровождаем после переезда.',
         defaultLocale: 'ru',
     },
 
