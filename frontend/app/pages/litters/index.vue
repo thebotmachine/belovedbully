@@ -22,7 +22,6 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="bg-elevated">
     <UContainer class="py-8 space-y-4">
       <UBreadcrumb :items="items" class="mb-8"/>
       <div class="flex flex-row gap-2">
@@ -33,8 +32,6 @@ useSeoMeta({
       <div v-else-if="error">Не удалось загрузить список.</div>
       <div v-else>Список пуст.</div>
     </UContainer>
-  </div>
-  <testcard/>
 </template>
 
 <style scoped>

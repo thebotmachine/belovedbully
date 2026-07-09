@@ -12,11 +12,16 @@ useHead({
 
 <template>
   <UApp>
+    <ScrollToTop/>
     <NuxtLoadingIndicator color="var(--ui-color-neutral-900)"/>
-    <NuxtLayout>
-      <UMain class="relative">
-        <NuxtPage/>
-      </UMain>
-    </NuxtLayout>
+
+    <AppHeader/>
+
+    <UMain class="bg-elevated">
+      <NuxtPage/>
+    </UMain>
+
+    <AppFooter/>
+
   </UApp>
 </template>

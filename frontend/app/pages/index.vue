@@ -54,6 +54,7 @@ const items = ref<AccordionItem[]>([
   },
 ])
 import {stagger} from 'motion-v'
+import {AnimatePresence, motion} from 'motion-v'
 
 const gridVariants = {
   hidden: {},
@@ -75,6 +76,29 @@ const cardVariants = {
     transition: {duration: 0.7, ease: "easeOut"},
   },
 }
+
+const accordionAnimation = {
+  initial: {
+    height: 0,
+    opacity: 0,
+  },
+  animate: {
+    height: 'auto',
+    opacity: 1,
+  },
+  exit: {
+    height: 0,
+    opacity: 0,
+  },
+  transition: {
+    height: {
+      duration: 0.3,
+    },
+    opacity: {
+      duration: 0.2,
+    },
+  },
+} as const
 
 const {dogs: puppies} = useDogs('/puppies/')
 
@@ -103,7 +127,7 @@ useSeoMeta({
     />
   </UPageSection>
 
-  <UPageSection :ui="{container: 'flex flex-col lg:grid py-8 sm:py-8 lg:py-8 gap-8 sm:gap-16'}">
+  <UPageSection class="bg-default" :ui="{container: 'flex flex-col lg:grid py-8 sm:py-8 lg:py-8 gap-8 sm:gap-16'}">
     <div class="flex flex-col items-left justify-left gap-2">
       <h2 class="text-3xl text-pretty tracking-tight text-highlighted font-serif">Как выбрать идеального щенка?</h2>
       <p class="sm:text-md text-toned">Выбирайте сердцем! Загляни в глаза своему будущему малышу. Почувствуй эту связь,
@@ -122,18 +146,36 @@ useSeoMeta({
     />
   </UPageSection>
 
-  <UPageSection>
+  <UPageSection class="bg-default">
+
     <div class="flex flex-col items-center justify-center gap-2">
       <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight text-highlighted font-serif">Частые
         вопросы</h2>
       <p class="sm:text-lg text-toned">Мы рады ответить на все ваши вопросы</p>
     </div>
-    <UAccordion :ui="{
-                      trigger: 'text-sm md:text-base',
-                      body: 'text-sm md:text-base'
-                    }"
-                :items="items"/>
+
+    <UAccordion
+        :items="items"
+        :ui="{
+      trigger: 'text-sm md:text-base',
+      body: 'text-sm md:text-base'
+    }"
+    >
+      <template #body="{ item, open }">
+        <AnimatePresence :initial="false">
+          <motion.div
+              v-if="open"
+              :key="item.label"
+              class="overflow-hidden"
+              v-bind="accordionAnimation"
+          >
+            {{ item.content }}
+          </motion.div>
+        </AnimatePresence>
+      </template>
+    </UAccordion>
 
   </UPageSection>
 
 </template>
+

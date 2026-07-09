@@ -16,6 +16,18 @@
   --color-sand-800: #655A52;
   --color-sand-900: #493F39;
   --color-sand-950: #2A2420;
+
+  --color-sage-50:  #F5F6F1;
+--color-sage-100: #E8EBE0;
+--color-sage-200: #D2D8C2;
+--color-sage-300: #B4BF9C;
+--color-sage-400: #94A377;
+--color-sage-500: #78895C;
+--color-sage-600: #5F6E48;
+--color-sage-700: #4B573A;
+--color-sage-800: #3D4630;
+--color-sage-900: #333A29;
+--color-sage-950: #1B1F14;
 }
 
 :root {
