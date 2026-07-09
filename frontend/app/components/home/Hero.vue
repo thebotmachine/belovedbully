@@ -57,24 +57,33 @@ function heroMotion(delay = 0) {
 
       <div class="max-w-2xl">
 
-        <Motion v-bind="heroMotion(0.1)">
-          <div class="text-3xl md:text-6xl text-inverted font-serif tracking-normal">
-            <span class="block">Добро </span>
-            <span class="block">пожаловать</span>
-            <span class="block">в питомник</span>
-            <span class="block">
-      <em class="italic">BelovedBully</em>
-    </span>
-          </div>
-        </Motion>
+        <div class="text-3xl md:text-6xl text-inverted font-serif tracking-normal">
+          <Motion v-bind="heroMotion(0.1)">
+            <span class="block">Добро</span>
+          </Motion>
 
-        <Motion v-bind="heroMotion(0.4)">
+          <Motion v-bind="heroMotion(0.2)">
+            <span class="block">пожаловать</span>
+          </Motion>
+
+          <Motion v-bind="heroMotion(0.3)">
+            <span class="block">в питомник</span>
+          </Motion>
+
+          <Motion v-bind="heroMotion(0.4)">
+            <span class="block">
+              <em class="italic">BelovedBully</em>
+            </span>
+          </Motion>
+        </div>
+
+        <Motion v-bind="heroMotion(0.5)">
           <p class="mt-4 md: mt-6 sm:text-lg text-[var(--ui-color-neutral-200)]">
             В каждом щенке мы видим любовь!
           </p>
         </Motion>
 
-        <Motion v-bind="heroMotion(0.8)">
+        <Motion v-bind="heroMotion(0.6)">
           <div class="flex gap-4 mt-6 md: mt-8">
             <UButton
                 to="/puppies"
