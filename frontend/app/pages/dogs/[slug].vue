@@ -260,7 +260,6 @@ const galleryHeights = ['h-72', 'h-48', 'h-64', 'h-56', 'h-80', 'h-40', 'h-60', 
                 </template>
 
                 <template #body>
-                  <UIcon name="i-custom-max" />
                   <div class="flex flex-col gap-2">
                     <UButton
                         target="_blank"
