@@ -28,6 +28,18 @@
 --color-sage-800: #3D4630;
 --color-sage-900: #333A29;
 --color-sage-950: #1B1F14;
+
+  --color-brand-50:  #FCF9F5;
+--color-brand-100: #F7F0E8;
+--color-brand-200: #EEDFCB;
+--color-brand-300: #E3C6A1;
+--color-brand-400: #D3A06E;
+--color-brand-500: #C17D45;
+--color-brand-600: #A76432;
+--color-brand-700: #8A4E28;
+--color-brand-800: #6D3D22;
+--color-brand-900: #562F1D;
+--color-brand-950: #30180F;
 }
 
 :root {

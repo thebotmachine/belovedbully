@@ -2,25 +2,24 @@ FROM node:24-alpine AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm ci
 
 COPY . .
 
 RUN npm run build
 
-
 FROM node:24-alpine
 
 WORKDIR /app
 
-COPY --from=build /app/.output ./.output
-COPY --from=build /app/package.json ./
+ENV NODE_ENV=production
 
-RUN npm install --omit=dev
+COPY --from=build /app/.output ./.output
+COPY --from=build /app/package*.json ./
+
+RUN npm ci --omit=dev
 
 EXPOSE 3000
-
-ENV NODE_ENV=production
 
 CMD ["node", ".output/server/index.mjs"]

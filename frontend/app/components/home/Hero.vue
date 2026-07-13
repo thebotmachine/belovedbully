@@ -87,7 +87,7 @@ function heroMotion(delay = 0) {
           <div class="flex gap-4 mt-6 md: mt-8">
             <UButton
                 to="/puppies"
-                color="neutral"
+                color="primary"
                 variant="solid"
                 size="xl"
                 trailing-icon="i-lucide-chevron-right"

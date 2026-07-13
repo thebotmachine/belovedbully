@@ -2,8 +2,6 @@
 import {stagger} from 'motion-v'
 
 defineProps<{
-  title: string
-  subtitle: string
   dogs: Dog[]
   fromContext: 'puppies' | 'producers'
   to: string
@@ -29,29 +27,6 @@ const cardVariants = {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center gap-2">
-    <Motion
-        tag="h2"
-        :initial="{ opacity: 0, y: 40 }"
-        :whileInView="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 0.7, delay: 0.2 }"
-        :inViewOptions="{ once: true, amount: 0.2 }"
-        class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight text-highlighted font-serif"
-    >
-      {{ title }}
-    </Motion>
-    <Motion
-        tag="p"
-        :initial="{ opacity: 0, y: 30 }"
-        :whileInView="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 0.6, delay: 0.5 }"
-        :inViewOptions="{ once: true, amount: 0.2 }"
-        class="sm:text-lg text-toned text-center"
-    >
-      {{ subtitle }}
-    </Motion>
-  </div>
-
   <Motion
       v-if="dogs.length"
       tag="div"
@@ -78,7 +53,7 @@ const cardVariants = {
         class-names
         :items="dogs"
         arrows
-        :ui="{ item: 'basis-[70%] gap-1 ' }"
+        :ui="{ item: 'basis-[45%] gap-1 ' }"
         class="mx-auto max-w-sm"
     >
         <DogsCard :dog="item" :fromContext="fromContext"/>

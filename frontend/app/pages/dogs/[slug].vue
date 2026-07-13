@@ -230,7 +230,103 @@ const galleryHeights = ['h-72', 'h-48', 'h-64', 'h-56', 'h-80', 'h-40', 'h-60', 
 
             <div class="flex flex-col md:flex-row gap-2">
               <UButton block size="xl" color="neutral" variant="outline">Родословная</UButton>
-              <UButton block size="xl" color="neutral">Забронировать</UButton>
+
+              <UModal>
+                <UButton block size="xl" color="neutral">Забронировать</UButton>
+                <template #header="{ close }">
+                  <div class="flex items-center gap-3 flex-1">
+                    <UAvatar
+                        v-if="dog.cover"
+                        :src="dog.cover.medium_url"
+                        size="3xl"
+                        class="rounded-lg"
+                    />
+                    <div class="flex flex-col">
+                      <div class="text-sm md:text-base font-semibold text-highlighted">
+                        Забронировать, {{ dog.name }}
+                      </div>
+                      <div class="text-xs md:text-sm text-muted">
+                        {{ dog.gender.label }} / {{ formatAge(dog.birth_date) }} / {{ formatDate(dog.birth_date) }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <UButton
+                      color="neutral"
+                      variant="ghost"
+                      icon="i-lucide-x"
+                      @click="close"
+                  />
+                </template>
+
+                <template #body>
+                  <UIcon name="i-custom-max" />
+                  <div class="flex flex-col gap-2">
+                    <UButton
+                        target="_blank"
+                        block
+                        size="lg"
+                        color="neutral"
+                        variant="soft"
+                        icon="i-custom-max"
+                        trailing-icon="i-lucide-chevron-right"
+                    >
+                      <div class="flex flex-col items-start">
+                        <span class="font-medium">Max</span>
+                        <span class="text-xs text-muted font-normal">Открыть чат</span>
+                      </div>
+                    </UButton>
+
+                    <UButton
+                        target="_blank"
+                        block
+                        size="lg"
+                        color="neutral"
+                        variant="soft"
+                        icon="i-simple-icons-telegram"
+                        trailing-icon="i-lucide-chevron-right"
+                    >
+                      <div class="flex flex-col items-start">
+                        <span class="font-medium">Telegram</span>
+                        <span class="text-xs text-muted font-normal">Открыть чат</span>
+                      </div>
+                    </UButton>
+
+                    <UButton
+                        to="https://wa.me/79688212621"
+                        target="_blank"
+                        block
+                        size="lg"
+                        color="neutral"
+                        variant="soft"
+                        icon="i-simple-icons-whatsapp"
+                        trailing-icon="i-lucide-chevron-right"
+                    >
+                      <div class="flex flex-col items-start">
+                        <span class="font-medium">WhatsApp</span>
+                        <span class="text-xs text-muted font-normal">Открыть чат</span>
+                      </div>
+                    </UButton>
+
+                    <UButton
+                        to="tel:+79688212621"
+                        target="_blank"
+                        block
+                        size="lg"
+                        color="neutral"
+                        variant="soft"
+                        icon="i-lucide-phone"
+                        trailing-icon="i-lucide-chevron-right"
+                    >
+                      <div class="flex flex-col items-start">
+                        <span class="font-medium">Позвонить</span>
+                        <span class="text-xs text-muted font-normal">Связаться по телефону</span>
+                      </div>
+                    </UButton>
+                  </div>
+                </template>
+              </UModal>
+
             </div>
 
           </div>

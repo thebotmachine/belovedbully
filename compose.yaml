@@ -35,8 +35,6 @@ services:
   frontend:
     build:
       context: ./frontend
-    volumes:
-      - /app/node_modules
     expose:
       - "3000"
 

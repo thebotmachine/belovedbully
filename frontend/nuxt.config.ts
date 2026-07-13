@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: false},
-    modules: ['@nuxt/ui', 'motion-v/nuxt', '@nuxtjs/seo', '@nuxt/icon'],
+    modules: ['@nuxt/ui', 'motion-v/nuxt', '@nuxtjs/seo'],
     css: ['~/assets/css/main.css'],
     ui: {
         colorMode: false,
@@ -27,6 +27,13 @@ export default defineNuxtConfig({
         providers: {
             fontsource: false
         }
+    },
+
+    icon: {
+        customCollections: [{
+            prefix: 'custom',
+            dir: './app/assets/icons'
+        }]
     },
 
     runtimeConfig: {

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-
-
 import type {AccordionItem} from '@nuxt/ui'
 
 const items = ref<AccordionItem[]>([
@@ -53,52 +51,6 @@ const items = ref<AccordionItem[]>([
         'Успех на выставках зависит от генетики, выращивания, обучения и работы с хендлером. Мы предоставляем щенков с хорошим выставочным потенциалом, а результат определяет дальнейшая подготовка.'
   },
 ])
-import {stagger} from 'motion-v'
-import {AnimatePresence, motion} from 'motion-v'
-
-const gridVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: stagger(0.30),
-      when: "beforeChildren",
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: {opacity: 0, y: 24, scale: 0.98, filter: "blur(4px)"},
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    filter: "blur(0px)",
-    transition: {duration: 0.7, ease: "easeOut"},
-  },
-}
-
-const accordionAnimation = {
-  initial: {
-    height: 0,
-    opacity: 0,
-  },
-  animate: {
-    height: 'auto',
-    opacity: 1,
-  },
-  exit: {
-    height: 0,
-    opacity: 0,
-  },
-  transition: {
-    height: {
-      duration: 0.3,
-    },
-    opacity: {
-      duration: 0.2,
-    },
-  },
-} as const
 
 const {dogs: puppies} = useDogs('/puppies/')
 
@@ -112,70 +64,103 @@ useSeoMeta({
   ogDescription: 'Щенки американского булли от титулованных родителей. Документы, доставка по России.',
   ogType: 'website',
 })
+
+function motion(delay = 0, y = 40, duration = 0.7) {
+  return {
+    initial: {opacity: 0, y},
+    whileInView: {opacity: 1, y: 0},
+    transition: {duration, delay},
+    inViewOptions: {once: true, amount: 0.2}
+  }
+}
+
+const baseui = computed(() => ({
+  title: 'font-serif font-normal tracking-normal',
+  description: '',
+}))
 </script>
 
 <template>
   <HomeHero/>
 
-  <UPageSection :ui="{ root: 'bg-elevated' }">
+  <UPageSection :ui="baseui">
+    <template #title>
+      <Motion v-bind="motion(0.2, 40, 0.7)">
+        Свободные щенки
+      </Motion>
+    </template>
+    <template #description>
+      <Motion v-bind="motion(0.5, 30, 0.6)">
+        Найдите своего будущего друга
+      </Motion>
+    </template>
     <HomeDogsPreview
-        title="Свободные щенки"
-        subtitle="Найдите своего будущего друга"
         :dogs="puppies"
         fromContext="puppies"
         to="/puppies"
     />
   </UPageSection>
 
-  <UPageSection class="bg-default" :ui="{container: 'flex flex-col lg:grid py-8 sm:py-8 lg:py-8 gap-8 sm:gap-16'}">
-    <div class="flex flex-col items-left justify-left gap-2">
-      <h2 class="text-3xl text-pretty tracking-tight text-highlighted font-serif">Как выбрать идеального щенка?</h2>
-      <p class="sm:text-md text-toned">Выбирайте сердцем! Загляни в глаза своему будущему малышу. Почувствуй эту связь,
-        эту искру! Сердце не обманет -
-        оно выберет того самого!</p>
-    </div>
+
+  <UPageSection class="bg-default" :ui="{
+    ...baseui,
+    container: 'flex flex-col lg:grid py-8 sm:py-8 lg:py-8 gap-8 sm:gap-16 lg:items-left'
+  }">
+    <template #title>
+      <Motion v-bind="motion(0.2, 40, 0.7)">
+        Как выбрать идеального щенка?
+      </Motion>
+    </template>
+    <template #description>
+      <Motion v-bind="motion(0.5, 30, 0.6)">
+        Выбирайте сердцем! Загляни в глаза своему будущему малышу. Почувствуй эту связь, эту искру! Сердце не обманет -
+        оно выберет того самого!
+      </Motion>
+    </template>
   </UPageSection>
 
-  <UPageSection :ui="{ root: 'bg-elevated' }">
+
+  <UPageSection :ui="baseui">
+    <template #title>
+      <Motion v-bind="motion(0.2, 40, 0.7)">
+        Наши производители
+      </Motion>
+    </template>
+    <template #description>
+      <Motion v-bind="motion(0.5, 30, 0.6)">
+        Основа будущих поколений американских булли
+      </Motion>
+    </template>
     <HomeDogsPreview
-        title="Наши производители"
-        subtitle="Основа будущих поколений американских булли"
         :dogs="producers"
         fromContext="producers"
         to="/producers"
     />
   </UPageSection>
 
-  <UPageSection class="bg-default">
 
-    <div class="flex flex-col items-center justify-center gap-2">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl text-pretty tracking-tight text-highlighted font-serif">Частые
-        вопросы</h2>
-      <p class="sm:text-lg text-toned">Мы рады ответить на все ваши вопросы</p>
-    </div>
-
+  <UPageSection :ui="baseui" class="bg-default">
+     <template #title>
+      <Motion v-bind="motion(0.2, 40, 0.7)">
+        Частые вопросы
+      </Motion>
+    </template>
+    <template #description>
+      <Motion v-bind="motion(0.5, 30, 0.6)">
+        Мы рады ответить на все ваши вопросы
+      </Motion>
+    </template>
     <UAccordion
         :items="items"
         :ui="{
-      trigger: 'text-sm md:text-base',
-      body: 'text-sm md:text-base'
-    }"
+              trigger: 'text-sm md:text-base',
+              body: 'text-sm md:text-base',
+              content: 'data-[state=open]:animate-[accordion-down_200ms_ease-out,fade-in_400ms_ease-out] data-[state=closed]:animate-[accordion-up_200ms_ease-out,fade-out_400ms_ease-in] data-[state=closed]:overflow-hidden focus:outline-none'
+            }"
     >
-      <template #body="{ item, open }">
-        <AnimatePresence :initial="false">
-          <motion.div
-              v-if="open"
-              :key="item.label"
-              class="overflow-hidden"
-              v-bind="accordionAnimation"
-          >
-            {{ item.content }}
-          </motion.div>
-        </AnimatePresence>
-      </template>
     </UAccordion>
-
   </UPageSection>
+
 
 </template>
 
