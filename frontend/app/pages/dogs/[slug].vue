@@ -33,6 +33,7 @@ function openModal(media: Media) {
 }
 
 
+
 const galleryHeights = ['h-72', 'h-48', 'h-64', 'h-56', 'h-80', 'h-40', 'h-60', 'h-52']
 </script>
 
@@ -231,7 +232,11 @@ const galleryHeights = ['h-72', 'h-48', 'h-64', 'h-56', 'h-80', 'h-40', 'h-60', 
             <div class="flex flex-col md:flex-row gap-2">
               <UButton block size="xl" color="neutral" variant="outline">Родословная</UButton>
 
-              <UModal>
+              <UModal v-if="
+                  dog?.role?.value !== 'producer' &&
+                  !(dog?.role?.value === 'puppy' &&
+                    ['reserved', 'sold'].includes(dog?.status?.value))
+                ">
                 <UButton block size="xl" color="neutral">Забронировать</UButton>
                 <template #header="{ close }">
                   <div class="flex items-center gap-3 flex-1">
