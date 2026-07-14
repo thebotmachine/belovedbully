@@ -262,6 +262,7 @@ const galleryHeights = ['h-72', 'h-48', 'h-64', 'h-56', 'h-80', 'h-40', 'h-60', 
                 <template #body>
                   <div class="flex flex-col gap-2">
                     <UButton
+                        to="https://max.ru/u/f9LHodD0cOJnFjQXh_RmboIraUrfCKZie8-l3172-u5dfr7sRzcgJ3O8Ezw"
                         target="_blank"
                         block
                         size="lg"

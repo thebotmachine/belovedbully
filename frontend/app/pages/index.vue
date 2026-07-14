@@ -108,7 +108,7 @@ const baseui = computed(() => ({
   }">
     <template #title>
       <Motion v-bind="motion(0.2, 40, 0.7)">
-        Как выбрать идеального щенка?
+        Как выбрать своего щенка?
       </Motion>
     </template>
     <template #description>

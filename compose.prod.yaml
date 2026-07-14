@@ -1,0 +1,9 @@
+services:
+
+  frontend:
+    build:
+      dockerfile: Dockerfile
+
+  caddy:
+    volumes:
+      - ./caddy/Caddyfile.prod:/etc/caddy/Caddyfile:ro

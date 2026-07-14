@@ -4,90 +4,124 @@
 
 <template>
 
-  <div class="bg-elevated">
-    <UContainer>
-      <div class="flex items-center gap-30 py-20">
+  <div class="flex flex-col lg:grid py-16 sm:py-24 lg:py-32 gap-8 sm:gap-16">
 
-        <div class="w-2/3">
-          <h2 class="pb-4 font-medium font-serif text-muted">
-            О питомнике
-          </h2>
+    <UContainer class="grid md:grid-cols-2 gap-10 items-center mx-auto">
+      <img
+          src="/hero1.jpg"
+          alt="BelovedBully питомник"
+          class="inset-0 w-full h-120 md:h-200 object-cover z-0 rounded-xl"
+      />
+      <div class="flex flex-col gap-8">
+        <div class="text-2xl/8 sm:text-3xl/10 lg:text-4xl/12 text-pretty font-serif tracking-wide uppercase">
+          Американские булли, выращенные благодаря знаниям,
+          заботе и
+          продуманной селекционной работе.
+        </div>
+        <div class="space-y-4 pl-4">
+          <p>
+            Наш питомник занимается разведением американских булли, уделяя внимание здоровью,
+            породному типу и устойчивому темпераменту собак. Мы работаем с тщательно подобранными
+            линиями, изучаем происхождение производителей и создаем условия для рождения и развития
+            щенков с сильными породными качествами.
+          </p>
 
-          <div class="grid grid-cols-2 gap-30 leading-relaxed">
-            <div class="max-w-prose">
-              Каждый щенок, который рождается здесь, – это маленькое чудо, в которое я вкладываю всю
-              свою любовь и заботу.
-              С первых дней жизни я наблюдаю за ними, помогаю им расти и развиваться, окружаю их
-              теплом и лаской.
-              Я знаю все их маленькие привычки, понимаю их взгляды, чувствую их настроение.
-            </div>
+          <p>
+            В основе нашей работы лежат планирование каждого помета, ответственная селекция и
+            внимание к деталям. Мы учитываем здоровье родителей, особенности характера и
+            совместимость линий, чтобы каждое следующее поколение сохраняло качества, которые
+            ценятся в породе.
+          </p>
 
-            <div>
-              Для меня важно не просто вырастить здоровых и красивых собак, но и воспитать в них
-              добрый и ласковый характер.
-              Я стараюсь, чтобы каждый щенок вырос уверенным в себе, общительным и преданным другом
-              для своей будущей семьи.
+          <p>
+            Каждый щенок проходит первые этапы жизни в спокойной среде, где получает уход,
+            контакт с человеком и раннюю социализацию. Мы уделяем внимание не только периоду
+            до переезда, но и дальнейшему пути собаки, оставаясь на связи с владельцами и
+            помогая адаптироваться к новому дому.
+          </p>
+        </div>
+      </div>
+    </UContainer>
+
+    <UContainer class="relative grid md:grid-cols-2 gap-10 items-center mx-auto">
+      <div class="flex flex-col gap-8 order-2 md:order-1">
+        <div class="text-2xl/8 sm:text-3xl/10 lg:text-4xl/12 font-serif tracking-wide uppercase">ПРОДУМАННЫЙ ПОДХОД К
+          КАЖДОМУ ПОКОЛЕНИЮ
+        </div>
+        <div class="space-y-4 pl-4">
+          <p>
+            Производители формируют основу нашей программы разведения. Мы тщательно подбираем собак, учитывая
+            происхождение, здоровье, особенности характера и соответствие породным качествам. Каждый выбор пары является
+            частью долгосрочной работы с линиями и направлен на сохранение сильных сторон породы.
+          </p>
+
+          <p>
+            С первых дней жизни щенки находятся под постоянным вниманием. Мы следим за их развитием, создаем условия для
+            правильной социализации и знакомим их с окружающим миром через ежедневный контакт с человеком. Такой подход
+            помогает формировать собак с устойчивым характером и подготовить их к жизни в новой семье.
+          </p>
+
+          <p>
+            Мы сопровождаем владельцев на всех этапах: от выбора щенка до периода адаптации после переезда. Для нас
+            важно,
+            чтобы каждая собака попадала в подходящий дом и продолжала получать заботу, внимание и правильный уход.
+          </p>
+
+        </div>
+      </div>
+      <div class="order-1 md:order-2 relative">
+
+        <div class="absolute -inset-6 bg-[#C9A24B]/10 blur-3xl rounded-full"></div>
+
+        <div class="relative rounded-xl overflow-hidden shadow-2xl">
+          <img
+              src="/hero2.jpg"
+              alt="BelovedBully питомник"
+              class="w-full h-80 md:h-200 object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="absolute -bottom-8 -left-6 md:-left-10 w-32 md:w-44 -rotate-6 z-10">
+          <div class="bg-[var(--ui-color-neutral-100)] p-2 pb-4 rounded-lg shadow-xl">
+            <div class="relative overflow-hidden rounded-sm grain">
+              <img
+                  src="/hero5.jpg"
+                  alt="Щенок BelovedBully"
+                  class="w-full h-28 md:h-42 object-cover"
+              />
             </div>
           </div>
         </div>
 
-        <img
-            src="/0S9Sg1mb-iU.jpg"
-            alt="BelovedBully питомник"
-            class="w-1/3 h-150 object-cover"
-        />
+        <div class="absolute -top-7 -right-5 md:-right-9 w-24 md:w-34 rotate-3 z-10">
+          <div class="rounded-xl overflow-hidden shadow-xl ring-4 ring-[var(--ui-color-neutral-950)]">
+            <img
+                src="/hero4.jpg"
+                alt="Собака BelovedBully"
+                class="w-full h-24 md:h-34 object-cover"
+            />
+          </div>
+        </div>
       </div>
     </UContainer>
-  </div>
 
-  <UContainer>
-    <div class="text-xl py-10">
-      BelovedBully — питомник, где рождаются и растут лучшие представители породы американский булли.
-      Мы создаем заботливую и профессиональную среду для наших питомцев,
-      уделяя внимание их здоровью, социализации и развитию.
+    <div class="grid md:grid-cols-2 gap-10 items-center text-right">
+      <img
+          src="/hero3.jpg"
+          alt="BelovedBully питомник"
+          class="inset-0 w-full h-60 md:h-120 object-cover z-0 md:rounded-r-xl order-2 md:order-1"
+      />
+      <div class="flex flex-col gap-8 text-right md:pr-10 order-1 md:order-2">
+        <div class="text-2xl/8 sm:text-3xl/10 lg:text-4xl/12 font-serif tracking-wide uppercase">
+          “КАЖДОЕ ПОКОЛЕНИЕ НАЧИНАЕТСЯ
+          С ОТВЕТСТВЕННОГО ВЫБОРА.
+          ЗДОРОВЬЕ, ХАРАКТЕР И ЗАБОТА
+          ФОРМИРУЮТ БУДУЩЕЕ ПОРОДЫ.”
+        </div>
+      </div>
     </div>
-  </UContainer>
 
-  <div class="bg-elevated">
-    <UContainer>
-      <div class="flex items-center gap-30 py-20">
-        <img
-            src="/HbjyGRj8i18.jpg"
-            alt="BelovedBully питомник"
-            class="w-1/3 h-150 object-cover"
-        />
-        <div class="w-2/3">
-          <h2 class="pb-4 font-medium font-serif text-muted">
-            Наша история
-          </h2>
-
-          <div class="grid grid-cols-2 gap-30 leading-relaxed">
-            <div class="max-w-prose">
-              Наш путь начался с большой любви к собакам и стремления создать идеального компаньона.
-								Изучая особенности породы, мы объединили знания, опыт и страсть,
-								чтобы вырастить собак, которые будут не только красивыми, но и здоровыми, умными и
-								дружелюбными.
-
-								Каждый наш щенок рождается и воспитывается в атмосфере заботы и любви.
-
-            </div>
-
-            <div>
-              Мы тщательно подбираем пары для вязок, следим за здоровьем наших питомцев
-								и уделяем особое внимание их социализации.
-
-								Сегодня наш питомник — это не просто место, где выращивают американских булли,
-								а настоящая семья, объединенная любовью к этим удивительным собакам.
-
-								Мы гордимся тем, что наши собаки приносят радость и преданность своим владельцам,
-								становясь неотъемлемой частью их жизни.
-            </div>
-          </div>
-        </div>
-
-
-      </div>
-    </UContainer>
   </div>
 
 </template>

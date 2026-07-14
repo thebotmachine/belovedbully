@@ -21,10 +21,10 @@ function heroMotion(delay = 0) {
 
 <template>
   <section
-      class="relative isolate overflow-hidden min-h-[calc(100vh-var(--ui-header-height))]"
+      class="relative isolate overflow-hidden min-h-[calc(100svh-var(--ui-header-height))]"
   >
     <img
-        src="/compressed_image.jpeg"
+        src="/hero1.jpg"
         alt="BelovedBully питомник"
         class="absolute inset-0 w-full h-full object-cover z-0"
     />
@@ -51,7 +51,7 @@ function heroMotion(delay = 0) {
     />
 
     <UContainer
-        class="relative z-20 min-h-[calc(100vh-var(--ui-header-height))]
+        class="relative z-20 min-h-[calc(100svh-var(--ui-header-height))]
          flex flex-col justify-end pb-12 md:pb-20"
     >
 
