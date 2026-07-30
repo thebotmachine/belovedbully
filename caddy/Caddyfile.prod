@@ -1,16 +1,13 @@
-{
-    email admin@belovedbully.ru
-}
-
 belovedbully.ru, www.belovedbully.ru {
-
     handle_path /static/* {
         root * /app/staticfiles
+        header Cache-Control "public, max-age=2592000"
         file_server
     }
 
     handle_path /media/* {
         root * /app/media
+        header Cache-Control "public, max-age=2592000"
         file_server
     }
 
@@ -26,7 +23,13 @@ belovedbully.ru, www.belovedbully.ru {
         }
     }
 
+    handle /_nuxt/* {
+        header Cache-Control "public, max-age=31536000, immutable"
+        reverse_proxy frontend:3000
+    }
+
     handle {
+        header Cache-Control "no-cache, must-revalidate"
         reverse_proxy frontend:3000
     }
 
